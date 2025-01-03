@@ -169,11 +169,8 @@ const Navbar = () => {
   ]);
   return (
     <header
-      className="flex justify-between   items-center px-1 md:px-20 lg:px-32 bg-cover bg-center bg-repeat  relative  after:absolute after:inset-0  after:backdrop-blur-md
+      className="flex justify-between   items-center px-1 md:px-20 lg:px-32 bg-[#e2d6fa] relative shadow-md 
       "
-      style={{
-        backgroundImage: `url(${HUMANOODLES})`,
-      }}
     >
       <div className="w-[60px] h-[60px] z-10">
         <img src={logo} className="object-fit" />

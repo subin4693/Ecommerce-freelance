@@ -35,15 +35,13 @@ const Banner = () => {
   return (
     <div className="h-[75vh] overflow-hidden w-full mt-2   relative bg-[#fdfaff]">
       {" "}
-      <div className="absolute top-0 left-0 h-full w-20 z-10 bg-gradient-to-r from-[#fdfaff] to-transparent"></div>
-      <div className="absolute top-0 right-0 h-full w-20 z-10 bg-gradient-to-l from-[#fdfaff] to-transparent"></div>
       <div className="h-full w-full bg-red- 500">
         <SimpleImageSlider
           width={"100%"}
           height={"100%"}
           images={bannsers}
           showBullets={true}
-          showNavs={false}
+          showNavs={true}
           autoPlay={true}
           autoPlayDelay={3}
         />

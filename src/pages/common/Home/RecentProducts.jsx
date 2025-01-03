@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import React, { useState } from "react";
-
+import { Heart, ShoppingBasket } from "lucide-react";
 const RecentProducts = () => {
   const [products, setProducts] = useState([
     {
@@ -66,7 +66,7 @@ const RecentProducts = () => {
   return (
     <div>
       <div>
-        <h2 className="text-center text-3xl md:text-5xl font-bold bg-gradient-to-r from-red-500 via-[#7ca9af] to-[#5b3b6d] bg-clip-text text-transparent mb-6">
+        <h2 className="text-center text-3xl md:text-5xl font-bold text-[#918ba7] mb-6">
           Most Recent Products
         </h2>
       </div>
@@ -89,18 +89,24 @@ const RecentProducts = () => {
 
 const Cards = ({ name, image, price, description }) => {
   return (
-    <Card className="relative group overflow-hidden shadow-lg rounded-lg border ">
+    <Card className="relative overflow-hidden shadow-lg rounded-lg border p-4 group hover:border hover:border-primary shadow-sm hover:shadow-lg duration-200 shadow-primary">
       <img
         src={image}
         alt={name}
-        className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+        className="w-full h-64 object-cover mb-4 rounded-lg"
       />
-      <div className="absolute inset-0 bg-primary/50 bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-center items-center text-black p-4">
-        <h2 className="text-lg font-semibold mb-2">{name}</h2>
-        <p className="text-sm mb-2 line-clamp-2">{description}</p>
-
-        <Button className="bg-[#73477a] hover:bg-[#a478d9]">$ {price}</Button>
+      <h2 className="text-lg font-semibold mb-2">{name}</h2>
+      <p className="text-sm mb-2 line-clamp-2">{description}</p>
+      <p className="text-green-600 font-bold  ">$ {price}</p>
+      <div className="flex absolute top-8 right-8 gap-2   opacity-0 group-hover:opacity-100 duration-200">
+        <Button size="icon" className="hover:bg-purple-900">
+          <ShoppingBasket />
+        </Button>
+        <Button size="icon" className="hover:bg-purple-900">
+          <Heart />
+        </Button>
       </div>
+      {/* <Button className="bg-[#73477a] hover:bg-[#a478d9]">Add to Cart</Button> */}
     </Card>
   );
 };
