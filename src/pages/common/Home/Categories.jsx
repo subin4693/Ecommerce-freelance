@@ -30,7 +30,7 @@ const Categories = () => {
   }, []);
 
   return (
-    <div id="categories" className="py-10 bg-white ">
+    <div id="categories" className="py-10   ">
       <h2 className="text-center text-3xl md:text-5xl font-bold text-[#918ba7] mb-6">
         Shop by Categories
       </h2>
