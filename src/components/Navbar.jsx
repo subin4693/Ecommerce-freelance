@@ -7,6 +7,7 @@ import HUMANOODLES8 from "@/assets/HUMANOODLES8.jpg";
 import { NavLink } from "react-router";
 import {
   ArrowBigRight,
+  ArrowDown,
   Heart,
   MenuIcon,
   ShoppingBasket,
@@ -179,8 +180,8 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) => {
-            return `hover:text-[#680c9d] duration-100 transition hover:underline ${
-              isActive ? "text-[#680c9d] underline" : ""
+            return `hover:text-[#680c9d] duration-100 transition   ${
+              isActive ? "text-[#680c9d]  " : ""
             }`;
           }}
         >
@@ -188,7 +189,7 @@ const Navbar = () => {
         </NavLink>
 
         <DropdownMenu>
-          <DropdownMenuTrigger className="hover:text-[#680c9d] duration-100 transition hover:underline ">
+          <DropdownMenuTrigger className="hover:text-[#680c9d] duration-100 transition   ">
             About
           </DropdownMenuTrigger>
           <DropdownMenuContent>
@@ -200,14 +201,55 @@ const Navbar = () => {
         <NavLink
           to="/shop"
           className={({ isActive }) => {
-            return `hover:text-[#680c9d] duration-100 transition hover:underline ${
-              isActive ? "text-[#680c9d] underline" : ""
+            return `hover:text-[#680c9d] duration-100 transition   ${
+              isActive ? "text-[#680c9d]  " : ""
             }`;
           }}
         >
           Shop
         </NavLink>
-
+        <DropdownMenu>
+          <DropdownMenuTrigger className="hover:text-[#680c9d] duration-100 transition   ">
+            All services
+          </DropdownMenuTrigger>
+          <DropdownMenuContent className="flex w-[600px] mr-[200px] p-5 gap-2 ">
+            <div className="w-1/3 border-r  max-h-[40vh] overflow-y-auto">
+              <h1 className="font-bold">Brands</h1>
+              <DropdownMenuItem>Nike</DropdownMenuItem>
+              <DropdownMenuItem>Adidas</DropdownMenuItem>
+              <DropdownMenuItem>Puma</DropdownMenuItem>
+              <DropdownMenuItem>Reebok</DropdownMenuItem>
+              <DropdownMenuItem>Under Armour</DropdownMenuItem>
+              <DropdownMenuItem>New Balance</DropdownMenuItem>
+              <DropdownMenuItem>Converse</DropdownMenuItem>
+              <DropdownMenuItem>Vans</DropdownMenuItem>
+              <DropdownMenuItem>Fila</DropdownMenuItem>
+              <DropdownMenuItem>Asics</DropdownMenuItem>
+              <DropdownMenuItem>Gucci</DropdownMenuItem>
+              <DropdownMenuItem>Prada</DropdownMenuItem>
+              <DropdownMenuItem>Louis Vuitton</DropdownMenuItem>
+              <DropdownMenuItem>Versace</DropdownMenuItem>
+              <DropdownMenuItem>Balenciaga</DropdownMenuItem>
+              <DropdownMenuItem>Calvin Klein</DropdownMenuItem>
+              <DropdownMenuItem>Tommy Hilfiger</DropdownMenuItem>
+            </div>
+            <div className="w-1/3   max-h-[40vh] overflow-y-auto">
+              <h1 className="font-bold">Categories</h1>
+              <DropdownMenuItem>Brand story</DropdownMenuItem>
+              <DropdownMenuItem>Founder's note</DropdownMenuItem>
+            </div>
+            <div
+              className="w-1/3   max-h-[40vh] overflow-y-auto bg-cover rounded-md"
+              style={{
+                backgroundImage: `url("https://i.pinimg.com/736x/b9/23/e9/b923e90ced92c4ed6df7ee75ee06d14a.jpg" )`,
+              }}
+            >
+              {/* <h1 className="font-bold">Categories</h1>
+              <DropdownMenuItem>Brand story</DropdownMenuItem>
+              <DropdownMenuItem>Founder's note</DropdownMenuItem> */}
+            </div>
+          </DropdownMenuContent>
+        </DropdownMenu>
         <Sheet>
           <SheetTrigger>
             <ShoppingBasket />
@@ -242,6 +284,7 @@ const Navbar = () => {
             </div>
           </SheetContent>
         </Sheet>
+
         <Sheet>
           <SheetTrigger>
             <Heart />
@@ -279,6 +322,8 @@ const Navbar = () => {
           </SheetContent>
         </Sheet>
       </nav>
+      {/* /*Mobile screen navigator****************************************************************************/}
+
       <div className="z-10   flex sm:hidden   ">
         <Drawer>
           <DrawerTrigger>
