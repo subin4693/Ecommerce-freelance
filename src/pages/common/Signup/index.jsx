@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router";
+import { toast } from "sonner";
 
 const Signup = () => {
   const [email, setEmail] = useState("");
@@ -12,6 +13,20 @@ const Signup = () => {
 
   const handleSignin = (e) => {
     e.preventDefault();
+    if (email.trim() === "") {
+      toast("Please Enter a valid email.");
+      return;
+    }
+
+    if (password.trim() === "") {
+      toast("Please Enter a valid password.");
+      return;
+    }
+
+    if (password != confirmPassword) {
+      toast("Password and confirm password must be same...");
+      return;
+    }
 
     navigate("/");
   };

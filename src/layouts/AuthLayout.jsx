@@ -4,7 +4,7 @@ import growposter from "@/assets/growposter.jpg";
 
 const AuthLayout = () => {
   return (
-    <session className="flex h-screen justify-center items-center">
+    <div className="flex h-screen justify-center items-center">
       <div
         className={
           "  md:p-0 md:w-[70vw] flex shadow-lg rounded-3xl overflow-hidden border"
@@ -21,7 +21,7 @@ const AuthLayout = () => {
           <Outlet />
         </div>
       </div>
-    </session>
+    </div>
   );
 };
 
