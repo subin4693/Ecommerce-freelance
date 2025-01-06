@@ -189,12 +189,25 @@ const Navbar = () => {
         </NavLink>
 
         <DropdownMenu>
-          <DropdownMenuTrigger className="hover:text-[#680c9d] duration-100 transition   ">
-            About
-          </DropdownMenuTrigger>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => {
+              return `hover:text-[#680c9d] duration-100 transition   ${
+                isActive ? "text-[#680c9d]  " : ""
+              }`;
+            }}
+          >
+            <DropdownMenuTrigger className="hover:text-[#680c9d] duration-100 transition   ">
+              About
+            </DropdownMenuTrigger>
+          </NavLink>
           <DropdownMenuContent>
-            <DropdownMenuItem>Brand story</DropdownMenuItem>
-            <DropdownMenuItem>Founder's note</DropdownMenuItem>
+            <NavLink to="/about/brand-story">
+              <DropdownMenuItem>Brand story</DropdownMenuItem>
+            </NavLink>
+            <NavLink to="/about/founders-note">
+              <DropdownMenuItem>Founder's note</DropdownMenuItem>
+            </NavLink>
           </DropdownMenuContent>
         </DropdownMenu>
 

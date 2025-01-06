@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import HUMANOODLES from "@/assets/HUMANOODLES.jpg";
-import HUMANOODLES1 from "@/assets/HUMANOODLES3.jpg";
-import HUMANOODLES2 from "@/assets/HUMANOODLES2.jpg";
+
 import SimpleImageSlider from "react-simple-image-slider";
 const Banner = () => {
-  const [bannsers, setBanners] = useState([
+  const [banners, setBanners] = useState([
     {
       _id: "sdfa",
       url: "https://t4.ftcdn.net/jpg/02/49/50/15/360_F_249501541_XmWdfAfUbWAvGxBwAM0ba2aYT36ntlpH.jpg",
@@ -15,12 +13,12 @@ const Banner = () => {
     },
   ]);
   return (
-    <div className="h-[75vh] overflow-hidden w-full mt-2   relative bg-[#fdfaff]">
-      <div className="h-full w-full bg-red- 500">
+    <div className="h-[75vh] overflow-hidden w-full mt-2    bg-[#fdfaff]">
+      <div className="h-full w-full relative">
         <SimpleImageSlider
           width={"100%"}
           height={"100%"}
-          images={bannsers}
+          images={banners}
           showBullets={true}
           showNavs={true}
           autoPlay={true}

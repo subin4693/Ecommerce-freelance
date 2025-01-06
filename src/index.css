@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Mogra&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base {
 
-  /* html {
-    font-family: 'Comic Neue', cursive;
-  } */
+@layer base {
+  html {
+    /* font-family: 'Comic Neue', cursive; */
+    /* font-family: 'Fredoka One', cursive; */
+    /* font-family: 'Chewy', cursive; */
+  }
 
   :root {
     --background: 0 0% 100%;
@@ -101,3 +105,4 @@
   border-radius: 0.75rem;
   background: linear-gradient(to bottom left, rgba(153, 15, 13, 0.3), white);
 }
+ 
