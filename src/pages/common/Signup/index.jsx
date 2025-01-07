@@ -33,7 +33,7 @@ const Signup = () => {
 
   return (
     <div className="flex justify-center flex-col  items-center h-full p-1 p-10">
-      <h1 className="text-3xl font-bold text-center font-mogra font-bold bg-gradient-to-r from-green-500 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+      <h1 className="text-3xl font-bold text-center font-mogra font-bold bg-gradient-to-r from-[#87A886] via-[#C481AF] to-[#7768A6] bg-clip-text text-transparent">
         Create an account{" "}
       </h1>
       <p>Enter your account details.</p>
