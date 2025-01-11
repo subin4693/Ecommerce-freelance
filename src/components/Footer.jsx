@@ -7,7 +7,7 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 
 const Footer = () => {
   return (
-    <div className="px-1 md:px-20 lg:px-32  bg-[#d2d6f1]/10 shadow-2xl border py-10">
+    <div className="px-1 md:px-20 lg:px-32  bg-[#d2d6f1]/10 shadow-2xl border py-10  ">
       <div className="flex flex-wrap flex-col-reverse md:flex-row justify-between ">
         <div className="h-[200px]">
           <img src={logo} alt="logo" className="w-full h-full object-contain" />

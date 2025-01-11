@@ -73,6 +73,9 @@
   body {
     @apply bg-background text-foreground;
   }
+  .breakpoint{
+    @apply px-1 md:px-20 lg:px-32 ;
+  }
 }
 .cat_item:hover{
   background-color: #680c9d !important;

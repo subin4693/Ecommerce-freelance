@@ -6,7 +6,7 @@ import Testimonials from "./Testimonials";
 
 const Home = () => {
   return (
-    <section>
+    <section className="mt-20 breakpoint">
       <Banner />
       <Categories />
       <RecentProducts />
