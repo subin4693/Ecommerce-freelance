@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Testimonials = () => {
   return (
-    <div>
+    <div className="mb-10">
       {" "}
       <h2 className="text-center text-3xl md:text-5xl font-bold bg-gradient-to-r from-[#d6b4d7] via-[#7ca9af] to-[#918ba7] bg-clip-text text-transparent mb-6">
         Testimonials

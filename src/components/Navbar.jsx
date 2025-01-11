@@ -44,6 +44,7 @@ import { Button } from "./ui/button";
 const Navbar = () => {
   const [carts, setCarts] = useState([
     {
+      _id: "sdfas",
       image: HUMANOODLES,
       name: `Explore and manage your favorite products in your wish list.
                 Keep track of the items you love and easily add them to your
@@ -53,6 +54,7 @@ const Navbar = () => {
       price: 200,
     },
     {
+      _id: "sdfaasdfas",
       image: HUMANOODLES,
       name: "Product one",
       quantity: 1,
@@ -62,6 +64,7 @@ const Navbar = () => {
       price: 200,
     },
     {
+      _id: "sdfaaerews",
       image: HUMANOODLES,
       name: "Product one",
       quantity: 1,
@@ -69,6 +72,7 @@ const Navbar = () => {
       price: 200,
     },
     {
+      _id: "sdfaasdfs",
       image: HUMANOODLES,
       name: "Product one",
       quantity: 1,
