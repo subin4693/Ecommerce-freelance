@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import React, { useState } from "react";
-import { Heart, ShoppingBasket } from "lucide-react";
+import { Heart, ShoppingCart } from "lucide-react";
 import { motion } from "framer-motion";
 
 const RecentProducts = () => {
@@ -115,7 +115,7 @@ const Cards = ({ name, image, price, description }) => {
         <p className="text-green-600 font-bold  ">$ {price}</p>
         <div className="flex absolute top-8 right-8 gap-2 opacity-0 group-hover:opacity-100 duration-200">
           <Button size="icon" className="hover:bg-purple-900">
-            <ShoppingBasket />
+            <ShoppingCart />
           </Button>
           <Button size="icon" className="hover:bg-purple-900">
             <Heart />

@@ -7,10 +7,11 @@ import HUMANOODLES8 from "@/assets/HUMANOODLES8.jpg";
 import { NavLink } from "react-router";
 import {
   ArrowBigRight,
-  ArrowDown,
   Heart,
   MenuIcon,
-  ShoppingBasket,
+  Minus,
+  Plus,
+  ShoppingCart,
   X,
 } from "lucide-react";
 import {
@@ -52,6 +53,7 @@ const Navbar = () => {
       quantity: 1,
       description: "something about this product",
       price: 200,
+      brand: "Nike",
     },
     {
       _id: "sdfaasdfas",
@@ -62,86 +64,7 @@ const Navbar = () => {
                 Keep track of the items you love and easily add them to your
                 cart when you're ready to purchase. Happy browsing!`,
       price: 200,
-    },
-    {
-      _id: "sdfaaerews",
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-    },
-    {
-      _id: "sdfaasdfs",
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-    },
-    {
-      image: HUMANOODLES,
-      name: `Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-    },
-    {
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: `                Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      price: 200,
-    },
-    {
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-    },
-    {
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-    },
-    {
-      image: HUMANOODLES,
-      name: `Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-    },
-    {
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: `                Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      price: 200,
-    },
-    {
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-    },
-    {
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
+      brand: "Adidas",
     },
   ]);
   const [wishList, setWishList] = useState([
@@ -150,7 +73,7 @@ const Navbar = () => {
       name: `Explore and manage your favorite products in your wish list.
                 Keep track of the items you love and easily add them to your
                 cart when you're ready to purchase. Happy browsing!`,
-      quantity: 1,
+
       description: "something about this product",
       price: 200,
     },
@@ -158,7 +81,7 @@ const Navbar = () => {
     {
       image: HUMANOODLES,
       name: "Product one",
-      quantity: 1,
+
       description: `                Explore and manage your favorite products in your wish list.
                 Keep track of the items you love and easily add them to your
                 cart when you're ready to purchase. Happy browsing!`,
@@ -167,13 +90,31 @@ const Navbar = () => {
     {
       image: HUMANOODLES,
       name: "Product one",
-      quantity: 1,
+
       description: "something about this product",
       price: 200,
     },
   ]);
+
+  const handleQuantityChange = (id, increment) => {
+    setCarts((prev) => {
+      return prev.map((item) => {
+        if (item._id == id) {
+          const updatedQuantity = increment
+            ? item.quantity + 1
+            : item.quantity - 1;
+          return {
+            ...item,
+            quantity: updatedQuantity > 0 ? updatedQuantity : 1,
+          };
+        }
+        return item;
+      });
+    });
+  };
   return (
     <header
+      id="navbar"
       className="flex justify-between    items-center px-1 md:px-20 lg:px-32 bg-[#e2d6fa] fixed top-0 left-0 right-0 z-10 shadow-md 
       "
     >
@@ -225,51 +166,10 @@ const Navbar = () => {
         >
           Shop
         </NavLink>
-        <DropdownMenu>
-          <DropdownMenuTrigger className="hover:text-[#680c9d] duration-100 transition   ">
-            All services
-          </DropdownMenuTrigger>
-          <DropdownMenuContent className="flex w-[600px] mr-[200px] p-5 gap-2 ">
-            <div className="w-1/3 border-r  max-h-[40vh] overflow-y-auto">
-              <h1 className="font-bold">Brands</h1>
-              <DropdownMenuItem>Nike</DropdownMenuItem>
-              <DropdownMenuItem>Adidas</DropdownMenuItem>
-              <DropdownMenuItem>Puma</DropdownMenuItem>
-              <DropdownMenuItem>Reebok</DropdownMenuItem>
-              <DropdownMenuItem>Under Armour</DropdownMenuItem>
-              <DropdownMenuItem>New Balance</DropdownMenuItem>
-              <DropdownMenuItem>Converse</DropdownMenuItem>
-              <DropdownMenuItem>Vans</DropdownMenuItem>
-              <DropdownMenuItem>Fila</DropdownMenuItem>
-              <DropdownMenuItem>Asics</DropdownMenuItem>
-              <DropdownMenuItem>Gucci</DropdownMenuItem>
-              <DropdownMenuItem>Prada</DropdownMenuItem>
-              <DropdownMenuItem>Louis Vuitton</DropdownMenuItem>
-              <DropdownMenuItem>Versace</DropdownMenuItem>
-              <DropdownMenuItem>Balenciaga</DropdownMenuItem>
-              <DropdownMenuItem>Calvin Klein</DropdownMenuItem>
-              <DropdownMenuItem>Tommy Hilfiger</DropdownMenuItem>
-            </div>
-            <div className="w-1/3   max-h-[40vh] overflow-y-auto">
-              <h1 className="font-bold">Categories</h1>
-              <DropdownMenuItem>Brand story</DropdownMenuItem>
-              <DropdownMenuItem>Founder's note</DropdownMenuItem>
-            </div>
-            <div
-              className="w-1/3   max-h-[40vh] overflow-y-auto bg-cover rounded-md"
-              style={{
-                backgroundImage: `url("https://i.pinimg.com/736x/b9/23/e9/b923e90ced92c4ed6df7ee75ee06d14a.jpg" )`,
-              }}
-            >
-              {/* <h1 className="font-bold">Categories</h1>
-              <DropdownMenuItem>Brand story</DropdownMenuItem>
-              <DropdownMenuItem>Founder's note</DropdownMenuItem> */}
-            </div>
-          </DropdownMenuContent>
-        </DropdownMenu>
+
         <Sheet>
           <SheetTrigger>
-            <ShoppingBasket />
+            <ShoppingCart />
           </SheetTrigger>
           <SheetContent className="overflow-y-auto">
             <div
@@ -282,7 +182,7 @@ const Navbar = () => {
             </div>
             <SheetHeader>
               <SheetTitle className="flex items-center">
-                <ShoppingBasket /> &nbsp;Your Cart
+                <ShoppingCart /> &nbsp;Your Cart
               </SheetTitle>
               <SheetDescription className="text-gray-700">
                 Review the items in your cart before proceeding to checkout. You
@@ -290,14 +190,24 @@ const Navbar = () => {
               </SheetDescription>
             </SheetHeader>
             <div className="space-y-3 mt-3">
-              {carts.map(({ image, name, description, price }) => (
-                <Cards
-                  image={image}
-                  name={name}
-                  description={description}
-                  price={price}
-                />
-              ))}
+              {carts.map(
+                ({ _id, image, name, description, price, quantity, brand }) => {
+                  console.log(_id + " working fine ---<");
+                  return (
+                    <Cards
+                      _id={_id}
+                      image={image}
+                      name={name}
+                      description={description}
+                      price={price}
+                      quantity={quantity}
+                      brand={brand}
+                      handleQuantityChange={handleQuantityChange}
+                    />
+                  );
+                }
+              )}
+              <Button className="w-full text-stone-900">Checkout</Button>
             </div>
           </SheetContent>
         </Sheet>
@@ -404,7 +314,7 @@ const Navbar = () => {
                     </div>
                     <SheetHeader>
                       <SheetTitle className="flex items-center">
-                        <ShoppingBasket /> &nbsp;Your Cart
+                        <ShoppingCart /> &nbsp;Your Cart
                       </SheetTitle>
                       <SheetDescription className="text-gray-700">
                         Review the items in your cart before proceeding to
@@ -413,14 +323,31 @@ const Navbar = () => {
                       </SheetDescription>
                     </SheetHeader>
                     <div className="space-y-3 mt-3">
-                      {carts.map(({ image, name, description, price }) => (
-                        <Cards
-                          image={image}
-                          name={name}
-                          description={description}
-                          price={price}
-                        />
-                      ))}
+                      {carts.map(
+                        ({
+                          _id,
+                          image,
+                          name,
+                          description,
+                          price,
+                          quantity,
+                          brand,
+                        }) => (
+                          <Cards
+                            _id={_id}
+                            image={image}
+                            name={name}
+                            description={description}
+                            price={price}
+                            quantity={quantity}
+                            brand={brand}
+                            handleQuantityChange={handleQuantityChange}
+                          />
+                        )
+                      )}{" "}
+                      <Button className="w-full text-stone-900">
+                        Checkout
+                      </Button>
                     </div>
                   </SheetContent>
                 </Sheet>
@@ -484,26 +411,58 @@ const Navbar = () => {
     </header>
   );
 };
-
-const Cards = ({ image, name, description, quantity, price }) => {
+const Cards = ({
+  _id,
+  image,
+  name,
+  description,
+  quantity,
+  price,
+  brand,
+  handleQuantityChange,
+}) => {
   return (
-    <Card className="flex gap-2 relative group">
-      <div className="min-w-[100px] max-w-[100px] h-[100px] ">
-        <img src={image} className="object-cover w-full h-full" />
+    <Card className="flex gap-2 relative group  ">
+      {/* Image Container */}
+      <div className=" min-w-[110px] max-w-[110px] flex items-center justify-center overflow-hidden   rounded">
+        <img src={image} className="object-cover w-full h-full" alt={name} />
       </div>
-      <div className="p-2 space-y-[1px]">
-        <h2 className="font-semibold line-clamp-1"> {name}</h2>
+
+      {/* Card Content */}
+      <div className="p-2 space-y-[1px]  ">
+        <h2 className="font-semibold line-clamp-1">{name}</h2>
+        <p className="line-clamp-1 text-sm font-bold">{brand}</p>
         <p className="line-clamp-1 text-xs">{description}</p>
 
         {quantity && (
-          <h3 className="text-xs font-bold">Quantity : {quantity} </h3>
+          <div className="flex gap-2 items-center">
+            <h3 className="text-xs font-bold">Quantity:</h3>
+            <div className="flex gap-2 items-center">
+              <Button
+                size="icon"
+                variant="outline"
+                className="w-5 h-5 flex justify-center items-center"
+                onClick={() => handleQuantityChange(_id, false)}
+              >
+                <Minus />
+              </Button>
+              {quantity}
+              <Button
+                size="icon"
+                variant="outline"
+                className="w-5 h-5 flex justify-center items-center"
+                onClick={() => handleQuantityChange(_id, true)}
+              >
+                <Plus />
+              </Button>
+            </div>
+          </div>
         )}
-
-        <h3 className="text-sm font-semibold">Price : {price} </h3>
+        <h3 className="text-sm font-semibold">Price: {price}</h3>
         <Button
           variant="outline"
           size="icon"
-          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 duration-200 ease-inout hover:bg-destructive hover:text-white w-5 h-5"
+          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 duration-200 ease-in-out hover:bg-destructive hover:text-white w-5 h-5"
         >
           <X />
         </Button>

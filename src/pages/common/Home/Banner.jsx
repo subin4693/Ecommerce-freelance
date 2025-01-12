@@ -14,7 +14,7 @@ const Banner = () => {
   ]);
   return (
     <div className="h-[75vh] overflow-hidden w-full mt-2    bg-[#fdfaff]">
-      <div className="h-full w-full relative">
+      <div className="h-full w-full relative rounded-3xl overflow-hidden">
         <SimpleImageSlider
           width={"100%"}
           height={"100%"}
