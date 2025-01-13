@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "@/assets/LILHUMANLOGO black.png";
+import logo from "@/assets/logo-bg-r.png";
 import { Input } from "./ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "./ui/button";
@@ -8,17 +8,17 @@ import { Facebook, Instagram, Twitter } from "lucide-react";
 const Footer = () => {
   return (
     <div className="px-1 md:px-20 lg:px-32  bg-[#d2d6f1]/10 shadow-2xl border py-10  ">
-      <div className="flex flex-wrap flex-col-reverse md:flex-row justify-between ">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:[grid-auto-flow:row] [grid-auto-flow:row-dense]">
         <div className="h-[200px]">
           <img src={logo} alt="logo" className="w-full h-full object-contain" />
         </div>{" "}
         <div className="flex space-x-8 mb-4 md:mb-0 justify-center mt-5 md:mt-0">
           <div>
-            <h3 className="text-xl font-bold     mb-6">Follow Us</h3>
-            <div className="flex space-x-4">
-              <Facebook className="cursor-pointer" />
-              <Instagram className="cursor-pointer" />
-              <Twitter className="cursor-pointer" />
+            <h3 className="text-xl font-bold     mb-6">Connect With Us</h3>
+            <div className="flex flex-col items-center md:items-start">
+              <a href="#">Facebook</a>
+              <a href="#">Instagram</a>
+              <a href="#">Twitter</a>
             </div>
           </div>
         </div>
