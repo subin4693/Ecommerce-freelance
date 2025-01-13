@@ -28,16 +28,16 @@ const ProductsCard = ({ name, image, price, description, brand }) => {
             src={image}
             alt={name}
             className="w-full h-64 object-cover mb-4 rounded-lg"
-          />
-          <h2 className="text-lg font-semibold mb-2">{name}</h2>
-          <p className="text-sm font-bold">{brand}</p>
-          <p className="text-sm mb-2 line-clamp-2 ">{description}</p>
-          <p className="text-green-600 font-bold  ">$ {price}</p>
+          />{" "}
+          <p className="text-sm font-bold text-left">{brand}</p>
+          <h2 className="text-lg font-semibold mb-2 text-left">{name}</h2>
+          {/* <p className="text-sm mb-2 line-clamp-2 text-left ">{description}</p> */}
+          <p className="text-green-600 font-bold text-left ">$ {price}</p>
         </div>
         <div className="flex gap-2 ">
           <Button className="flex-1 text-black  ">Add to cart</Button>
           <Button
-            className="text-black hover:bg-destructive"
+            className="text-black hover:bg-destructive absolute top-5 right-5 "
             variant="outline"
             size="icon"
           >

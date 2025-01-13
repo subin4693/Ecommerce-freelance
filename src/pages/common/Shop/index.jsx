@@ -92,7 +92,7 @@ const Shop = () => {
   ]);
   const [sidebar, setSidebar] = useState(false);
   return (
-    <div className="flex  h-full w-full   py-5">
+    <div className="flex  h-full w-full   py-5 ">
       <div className="min-h-[50vh] fixed z-[5] bg-white mt-[40px]  bottom-0 top-0 pt-10  ">
         <Sidebar isSidebarOpen={sidebar} setIsSidebarOpen={setSidebar} />
       </div>
@@ -100,13 +100,14 @@ const Shop = () => {
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
+        className="w-full"
       >
         <div
-          className={`duration-300 mt-20 transform ${
+          className={`duration-300 mt-20 transform   ${
             sidebar ? "ml-full md:ml-[400px]" : "ml-0"
           }`}
         >
-          <div className="relative w-full flex justify-end pr-6 md:pr-0 md:justify-center">
+          <div className="relative w-full flex justify-end pr-6 md:pr-0 md:justify-center b">
             <Button
               variant="outline"
               size="icon"
@@ -125,7 +126,7 @@ const Shop = () => {
             </div>
           </div>
           <div
-            className={`grid   gap-6 p-6 ${
+            className={`grid    gap-6 p-6 ${
               sidebar
                 ? "grid-cols-1 sm:grid-cols-1  lg:grid-cols-3  "
                 : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"

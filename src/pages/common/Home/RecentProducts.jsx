@@ -112,7 +112,7 @@ const Cards = ({ name, image, price, description }) => {
         />
         <h2 className="text-lg font-semibold mb-2">{name}</h2>
         <p className="text-sm mb-2 line-clamp-2">{description}</p>
-        <p className="text-green-600 font-bold  ">$ {price}</p>
+        <p className="text-green-600 font-bold  ">&#x20B9; {price}</p>
         <div className="flex absolute top-8 right-8 gap-2 opacity-0 group-hover:opacity-100 duration-200">
           <Button size="icon" className="hover:bg-purple-900">
             <ShoppingCart />

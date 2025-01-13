@@ -110,7 +110,7 @@
 }
 /* Style for the entire scrollbar */
 ::-webkit-scrollbar {
-  width: 10px; /* Width of the vertical scrollbar */
+  width: 15px; /* Width of the vertical scrollbar */
   height: 10px; /* Height of the horizontal scrollbar */
 }
 
@@ -122,15 +122,15 @@
 
 /* Handle of the scrollbar */
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #87A886, #C481AF); /* Gradient color for the thumb */
+  background:  #beb8d1; /* Gradient color for the thumb */
   border-radius: 6px; /* Rounded edges */
   border: 3px solid transparent; /* Adds space around the thumb */
   background-clip: padding-box; /* Makes the border look inset */
 }
 
-/* Handle hover state */
+Handle hover state
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #87A886, #87A886); /* Darker gradient on hover */
+  background:  #beb8d1;
 }
 
 /* Optional: To style horizontal scrollbars */
