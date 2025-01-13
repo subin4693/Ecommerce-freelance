@@ -108,4 +108,32 @@
   border-radius: 0.75rem;
   background: linear-gradient(to bottom left, rgba(153, 15, 13, 0.3), white);
 }
- 
+/* Style for the entire scrollbar */
+::-webkit-scrollbar {
+  width: 10px; /* Width of the vertical scrollbar */
+  height: 10px; /* Height of the horizontal scrollbar */
+}
+
+/* Track of the scrollbar */
+::-webkit-scrollbar-track {
+  background: #e0e0e0; /* Light gray track */
+  border-radius: 6px; /* Rounded edges */
+}
+
+/* Handle of the scrollbar */
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #87A886, #C481AF); /* Gradient color for the thumb */
+  border-radius: 6px; /* Rounded edges */
+  border: 3px solid transparent; /* Adds space around the thumb */
+  background-clip: padding-box; /* Makes the border look inset */
+}
+
+/* Handle hover state */
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #87A886, #87A886); /* Darker gradient on hover */
+}
+
+/* Optional: To style horizontal scrollbars */
+::-webkit-scrollbar-thumb:horizontal {
+  background: linear-gradient(90deg, #7768A6, #7768A6);
+}

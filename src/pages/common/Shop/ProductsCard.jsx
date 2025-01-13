@@ -11,6 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const ProductsCard = ({ name, image, price, description, brand }) => {
   return (
@@ -49,7 +50,7 @@ const ProductsCard = ({ name, image, price, description, brand }) => {
 };
 
 const DialogCard = ({ children, name, image, price, description, brand }) => {
-  const images = [image, image, image];
+  const images = [image, image, image, image, image, image];
   const [currentImage, setCurrentImage] = useState(images[0]);
 
   return (
@@ -61,7 +62,7 @@ const DialogCard = ({ children, name, image, price, description, brand }) => {
             <img src={currentImage} className="w-full h-full object-cover" />
           </div>
           <div className="flex justify-center items-center">
-            <div className="flex justify-center overflow-x-auto gap-2 absolute bottom-0 opacity-0 group-hover:opacity-100  ease-in-out bg-gray-900/20 w-[80%] rounded-md  p-2">
+            <div className="flex justify-start overflow-x-auto gap-2 absolute bottom-0 duration-300 opacity-0 group-hover:opacity-100  ease-in-out bg-gray-900/20 w-fit max-w-[80%] rounded-md  p-2">
               {images.map((img) => (
                 <div
                   className="border-primary shadow-xl hover:scale-110 duration-300 md:basis-1/2 lg:basis-1/5"
