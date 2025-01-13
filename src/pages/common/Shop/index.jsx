@@ -12,6 +12,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: true,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -21,6 +22,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: false,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -30,6 +32,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: false,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -39,6 +42,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: false,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -48,6 +52,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: false,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -57,6 +62,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: true,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -66,6 +72,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: false,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -75,6 +82,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: true,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -84,6 +92,7 @@ const Shop = () => {
       name: "Dress One",
       price: "500",
       brand: "Adidas",
+      isOutOfStock: false,
       description:
         "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
       image:
@@ -132,17 +141,20 @@ const Shop = () => {
                 : "grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
             } `}
           >
-            {products.map(({ name, image, price, description, brand }) => {
-              return (
-                <ProductsCard
-                  name={name}
-                  image={image}
-                  price={price}
-                  description={description}
-                  brand={brand}
-                />
-              );
-            })}
+            {products.map(
+              ({ name, image, price, description, brand, isOutOfStock }) => {
+                return (
+                  <ProductsCard
+                    name={name}
+                    image={image}
+                    price={price}
+                    description={description}
+                    brand={brand}
+                    isOutOfStock={isOutOfStock}
+                  />
+                );
+              }
+            )}
           </div>
         </div>
       </motion.div>

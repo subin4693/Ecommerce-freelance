@@ -11,9 +11,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
-const ProductsCard = ({ name, image, price, description, brand }) => {
+const ProductsCard = ({
+  name,
+  image,
+  price,
+  description,
+  brand,
+  isOutOfStock,
+}) => {
+  const handleWishList = (e) => {
+    e.stopPropagation();
+  };
   return (
     <DialogCard
       name={name}
@@ -29,20 +38,26 @@ const ProductsCard = ({ name, image, price, description, brand }) => {
             alt={name}
             className="w-full h-64 object-cover mb-4 rounded-lg"
           />{" "}
-          <p className="text-sm font-bold text-left">{brand}</p>
-          <h2 className="text-lg font-semibold mb-2 text-left">{name}</h2>
-          {/* <p className="text-sm mb-2 line-clamp-2 text-left ">{description}</p> */}
-          <p className="text-green-600 font-bold text-left ">$ {price}</p>
-        </div>
-        <div className="flex gap-2 ">
-          <Button className="flex-1 text-black  ">Add to cart</Button>
           <Button
             className="text-black hover:bg-destructive absolute top-5 right-5 "
             variant="outline"
             size="icon"
+            onClick={handleWishList}
           >
             <Heart />
           </Button>
+          {isOutOfStock && (
+            <span className="absolute top-5 left-5 bg-white p-1 rounded-md shadow-md text-destructive">
+              Out of stock
+            </span>
+          )}
+          <p className="text-sm font-bold text-left">{brand}</p>
+          <h2 className="text-lg font-semibold   text-left">{name}</h2>
+          {/* <p className="text-sm mb-2 line-clamp-2 text-left ">{description}</p> */}
+          <div className="flex items-center justify-between">
+            <p className=" text-lg font-bold text-left "> &#x20B9; {price}</p>{" "}
+            <Button className="  text-black  ">Add to cart</Button>
+          </div>
         </div>
       </Card>
     </DialogCard>

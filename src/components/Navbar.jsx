@@ -238,6 +238,7 @@ const Navbar = () => {
                 can adjust quantities or remove items as needed. Happy shopping!
               </SheetDescription>
             </SheetHeader>
+            <Button className="w-full text-stone-900 mt-5">Checkout</Button>
             <div className="space-y-3 mt-3">
               {carts.map(
                 ({ _id, image, name, description, price, quantity, brand }) => {
@@ -256,7 +257,6 @@ const Navbar = () => {
                   );
                 }
               )}
-              <Button className="w-full text-stone-900">Checkout</Button>
             </div>
           </SheetContent>
         </Sheet>
