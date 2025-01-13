@@ -12,36 +12,50 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-const ProductsCard = ({ name, image, price, description }) => {
+const ProductsCard = ({ name, image, price, description, brand }) => {
   return (
     <DialogCard
       name={name}
       image={image}
       price={price}
       description={description}
+      brand={brand}
     >
-      <Card className="relative overflow-hidden shadow-lg rounded-lg border p-4 group hover:border hover:border-primary shadow-sm hover:shadow-lg duration-200 shadow-primary h-full">
-        <img
-          src={image}
-          alt={name}
-          className="w-full h-64 object-cover mb-4 rounded-lg"
-        />
-        <h2 className="text-lg font-semibold mb-2">{name}</h2>
-        <p className="text-sm mb-2 line-clamp-2">{description}</p>
-        <p className="text-green-600 font-bold  ">$ {price}</p>
+      <Card className="relative flex flex-col overflow-hidden shadow-lg rounded-lg border p-4 group hover:border hover:border-primary shadow-sm hover:shadow-lg duration-200 shadow-primary h-full">
+        <div className="flex flex-col flex-1  ">
+          <img
+            src={image}
+            alt={name}
+            className="w-full h-64 object-cover mb-4 rounded-lg"
+          />
+          <h2 className="text-lg font-semibold mb-2">{name}</h2>
+          <p className="text-sm font-bold">{brand}</p>
+          <p className="text-sm mb-2 line-clamp-2 ">{description}</p>
+          <p className="text-green-600 font-bold  ">$ {price}</p>
+        </div>
+        <div className="flex gap-2 ">
+          <Button className="flex-1 text-black  ">Add to cart</Button>
+          <Button
+            className="text-black hover:bg-destructive"
+            variant="outline"
+            size="icon"
+          >
+            <Heart />
+          </Button>
+        </div>
       </Card>
     </DialogCard>
   );
 };
 
-const DialogCard = ({ children, name, image, price, description }) => {
+const DialogCard = ({ children, name, image, price, description, brand }) => {
   const images = [image, image, image];
   const [currentImage, setCurrentImage] = useState(images[0]);
 
   return (
     <Dialog>
       <DialogTrigger>{children}</DialogTrigger>
-      <DialogContent className=" max-w-full md:w-[1000px] flex p-2 flex-col md:flex-row ">
+      <DialogContent className=" max-w-full md:w-[1000px] flex p-2 flex-col md:flex-row flex-1">
         <div className="  md:w-1/2 relative group h-[300px] md:h-[500px]">
           <div className="h-full">
             <img src={currentImage} className="w-full h-full object-cover" />
@@ -62,22 +76,24 @@ const DialogCard = ({ children, name, image, price, description }) => {
             </div>
           </div>
         </div>
-        <div className="md:w-1/2">
+        <div className="md:w-1/2 p-5">
           <DialogHeader>
             <DialogTitle>{name}</DialogTitle>
-            <DialogDescription>{description}</DialogDescription>
+            <p className="text-sm font-bold">{brand}</p>
+            <DialogDescription className="indent-7">
+              {description}
+            </DialogDescription>
             <DialogTitle>Price : {price}</DialogTitle>
-            <div className="w-full flex gap-2 text-black">
-              <Button className="w-full text-black ">
-                {" "}
-                <ShoppingBasket size={64} />
-                Add to Cart
-              </Button>
-              <Button variant="destructive" className="w-full text-black">
-                <Heart /> Add to fav
+            <div className="flex gap-2 ">
+              <Button className="flex-1 text-black  ">Add to cart</Button>
+              <Button
+                className="text-black hover:bg-destructive"
+                variant="outline"
+                size="icon"
+              >
+                <Heart />
               </Button>
             </div>
-            <Button className="text-black">Buy</Button>
           </DialogHeader>
         </div>
       </DialogContent>

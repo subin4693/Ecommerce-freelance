@@ -70,8 +70,8 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
 
   return (
     <ScrollArea
-      className={`p-0    relative overflow-y-auto    lg:border-r h-full duration-300 ${
-        isSidebarOpen ? "w-full md:w-[400px] px-10" : "w-0 p-0"
+      className={`    relative overflow-y-auto    lg:border-r h-full duration-300 ${
+        isSidebarOpen ? "w-screen md:w-[400px] px-10" : "w-0 p-0"
       }`}
     >
       <Button

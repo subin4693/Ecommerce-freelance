@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo-bg-r.png";
 import HUMANOODLES from "@/assets/HUMANOODLES.jpg";
 import HUMANOODLES5 from "@/assets/HUMANOODLES5.jpg";
 import HUMANOODLES8 from "@/assets/HUMANOODLES8.jpg";
@@ -66,6 +66,50 @@ const Navbar = () => {
       price: 200,
       brand: "Adidas",
     },
+    {
+      _id: "sdfas",
+      image: HUMANOODLES,
+      name: `Explore and manage your favorite products in your wish list.
+                Keep track of the items you love and easily add them to your
+                cart when you're ready to purchase. Happy browsing!`,
+      quantity: 1,
+      description: "something about this product",
+      price: 200,
+      brand: "Nike",
+    },
+    {
+      _id: "sdfaasdfas",
+      image: HUMANOODLES,
+      name: "Product one",
+      quantity: 1,
+      description: `                Explore and manage your favorite products in your wish list.
+                Keep track of the items you love and easily add them to your
+                cart when you're ready to purchase. Happy browsing!`,
+      price: 200,
+      brand: "Adidas",
+    },
+    {
+      _id: "sdfas",
+      image: HUMANOODLES,
+      name: `Explore and manage your favorite products in your wish list.
+                Keep track of the items you love and easily add them to your
+                cart when you're ready to purchase. Happy browsing!`,
+      quantity: 1,
+      description: "something about this product",
+      price: 200,
+      brand: "Nike",
+    },
+    {
+      _id: "sdfaasdfas",
+      image: HUMANOODLES,
+      name: "Product one",
+      quantity: 1,
+      description: `                Explore and manage your favorite products in your wish list.
+                Keep track of the items you love and easily add them to your
+                cart when you're ready to purchase. Happy browsing!`,
+      price: 200,
+      brand: "Adidas",
+    },
   ]);
   const [wishList, setWishList] = useState([
     {
@@ -76,6 +120,7 @@ const Navbar = () => {
 
       description: "something about this product",
       price: 200,
+      brand: "Nike",
     },
 
     {
@@ -86,6 +131,7 @@ const Navbar = () => {
                 Keep track of the items you love and easily add them to your
                 cart when you're ready to purchase. Happy browsing!`,
       price: 200,
+      brand: "Nike",
     },
     {
       image: HUMANOODLES,
@@ -93,6 +139,7 @@ const Navbar = () => {
 
       description: "something about this product",
       price: 200,
+      brand: "Nike",
     },
   ]);
 
@@ -236,15 +283,18 @@ const Navbar = () => {
               </SheetDescription>
             </SheetHeader>
             <div className="space-y-3  mt-3">
-              {wishList.map(({ image, name, description, quantity, price }) => (
-                <Cards
-                  image={image}
-                  name={name}
-                  description={description}
-                  quantity={quantity}
-                  price={price}
-                />
-              ))}
+              {wishList.map(
+                ({ image, name, description, quantity, price, brand }) => (
+                  <Cards
+                    image={image}
+                    name={name}
+                    description={description}
+                    quantity={quantity}
+                    price={price}
+                    brand={brand}
+                  />
+                )
+              )}
             </div>
           </SheetContent>
         </Sheet>
