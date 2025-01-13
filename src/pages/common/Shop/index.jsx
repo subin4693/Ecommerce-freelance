@@ -102,6 +102,12 @@ const Shop = () => {
   const [sidebar, setSidebar] = useState(false);
   return (
     <div className="flex  h-full w-full   py-5 ">
+      {/* {sidebar && (
+        <div
+          className="fixed  z-[3]  inset-0"
+          onClick={() => setSidebar(false)}
+        />
+      )} */}
       <div className="min-h-[50vh] fixed z-[5] bg-white mt-[40px]  bottom-0 top-0 pt-10  ">
         <Sidebar isSidebarOpen={sidebar} setIsSidebarOpen={setSidebar} />
       </div>

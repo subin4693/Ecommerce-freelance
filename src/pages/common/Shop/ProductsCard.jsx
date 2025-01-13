@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import React, { useState } from "react";
-import { Heart, ShoppingBasket } from "lucide-react";
+import { Heart, Minus, Plus, ShoppingBasket } from "lucide-react";
 
 import {
   Dialog,
@@ -20,9 +20,15 @@ const ProductsCard = ({
   brand,
   isOutOfStock,
 }) => {
+  const [quantaty, setQuantaty] = useState(0);
   const handleWishList = (e) => {
     e.stopPropagation();
   };
+
+  const changeQuantity = (isIncrement) => {
+    setQuantaty(isIncrement ? quantaty + 1 : quantaty - 1);
+  };
+
   return (
     <DialogCard
       name={name}
@@ -38,14 +44,15 @@ const ProductsCard = ({
             alt={name}
             className="w-full h-64 object-cover mb-4 rounded-lg"
           />{" "}
-          <Button
-            className="text-black hover:bg-destructive absolute top-5 right-5 "
-            variant="outline"
-            size="icon"
+          <button
+            className="text-black absolute top-5 right-5   bg-white rounded-md p-2"
             onClick={handleWishList}
           >
-            <Heart />
-          </Button>
+            <Heart
+              className=" hover:fill-destructive transition-colors duration-200"
+              size={20}
+            />
+          </button>
           {isOutOfStock && (
             <span className="absolute top-5 left-5 bg-white p-1 rounded-md shadow-md text-destructive">
               Out of stock
@@ -56,7 +63,45 @@ const ProductsCard = ({
           {/* <p className="text-sm mb-2 line-clamp-2 text-left ">{description}</p> */}
           <div className="flex items-center justify-between">
             <p className=" text-lg font-bold text-left "> &#x20B9; {price}</p>{" "}
-            <Button className="  text-black  ">Add to cart</Button>
+            {quantaty > 0 ? (
+              <div className="flex justify-center items-center gap-2">
+                <Button
+                  size={"icon"}
+                  variant="secondary"
+                  className="hover:shadow-sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    changeQuantity(false);
+                  }}
+                >
+                  <Minus />
+                </Button>
+                <span>{quantaty}</span>
+
+                <Button
+                  size={"icon"}
+                  variant="secondary"
+                  className="hover:shadow-sm"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    changeQuantity(true);
+                  }}
+                >
+                  {" "}
+                  <Plus />
+                </Button>
+              </div>
+            ) : (
+              <Button
+                className="text-black"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  changeQuantity(true);
+                }}
+              >
+                <Plus /> Add
+              </Button>
+            )}
           </div>
         </div>
       </Card>

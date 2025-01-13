@@ -1,7 +1,7 @@
-import { Minus, X, Plus } from "lucide-react";
+import { Minus, X, Plus, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
-import React from "react";
+import React, { useState } from "react";
 
 const CartCard = ({
   _id,
@@ -13,51 +13,70 @@ const CartCard = ({
   brand,
   handleQuantityChange,
 }) => {
+  const [quantaty, setQuantaty] = useState(0);
+
+  const changeQuantity = (isIncrement) => {
+    setQuantaty(isIncrement ? quantaty + 1 : quantaty - 1);
+  };
   return (
     <Card className="flex gap-2 relative group  ">
-      {/* Image Container */}
       <div className=" min-w-[110px] max-w-[110px] flex items-center justify-center overflow-hidden   rounded">
         <img src={image} className="object-cover w-full h-full" alt={name} />
       </div>
 
-      {/* Card Content */}
-      <div className="p-2 space-y-[1px]  ">
+      <div className="p-2 space-y-[1px] w-full  ">
         <h2 className="font-semibold line-clamp-1">{name}</h2>
-        <p className="line-clamp-1 text-sm font-bold">{brand}</p>
-        <p className="line-clamp-1 text-xs">{description}</p>
+        <div className="flex justify-between items-center">
+          <p className="line-clamp-1 text-md font-bold">{brand}</p>
+          <h3 className="text-lg font-semibold"> &#x20B9; {price}</h3>
+        </div>
 
-        {quantity && (
+        <div className="flex gap-2 items-center justify-between">
           <div className="flex gap-2 items-center">
-            <h3 className="text-xs font-bold">Quantity:</h3>
-            <div className="flex gap-2 items-center">
+            <div className="flex justify-center items-center gap-2">
               <Button
                 size="icon"
                 variant="outline"
-                className="w-5 h-5 flex justify-center items-center"
-                onClick={() => handleQuantityChange(_id, false)}
+                className="w-8 h-8 flex justify-center items-center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  changeQuantity(false);
+                }}
               >
                 <Minus />
               </Button>
-              {quantity}
+              <span>{quantaty}</span>
+
               <Button
                 size="icon"
                 variant="outline"
-                className="w-5 h-5 flex justify-center items-center"
-                onClick={() => handleQuantityChange(_id, true)}
+                className="w-8 h-8 flex justify-center items-center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  changeQuantity(true);
+                }}
               >
+                {" "}
                 <Plus />
               </Button>
             </div>
           </div>
-        )}
-        <h3 className="text-sm font-semibold">Price: {price}</h3>
-        <Button
+          <Button
+            className="w-7 h-7 duration-300 opacity-0  opacity-100  ease-in-out hover:bg-destructive hover:text-white"
+            variant="destructive"
+            size="icon"
+          >
+            <Trash2 />
+          </Button>
+        </div>
+
+        {/* <Button
           variant="outline"
           size="icon"
-          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 duration-200 ease-in-out hover:bg-destructive hover:text-white w-5 h-5"
+          className="absolute top-2 right-2  w-5 h-5"
         >
           <X />
-        </Button>
+        </Button> */}
       </div>
     </Card>
   );

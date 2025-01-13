@@ -69,150 +69,154 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
   };
 
   return (
-    <ScrollArea
-      className={`relative overflow-y-auto    lg:border-r h-full duration-300 ${
-        isSidebarOpen ? "w-screen md:w-[400px] px-10" : "w-0 p-0"
-      }`}
-    >
-      <Button
-        className="absolute top-1/2 transform -translate-y-1/2 right-0 border"
-        size="icon"
-        variant="secondary"
-        onClick={() => setIsSidebarOpen((prev) => !prev)}
+    <>
+      <ScrollArea
+        className={`relative overflow-y-auto    lg:border-r h-full duration-300 ${
+          isSidebarOpen ? "w-screen md:w-[400px] px-10" : "w-0 p-0"
+        }`}
       >
-        <ChevronLeft />
-      </Button>
-      <div>
-        <header className="flex justify-between items-center mb-2">
-          <h2 className="font-bold text-lg">Filters</h2>
-          <button
-            className="text-sm"
-            onClick={() => setFilters([])} // Clear all filters
-          >
-            CLEAR ALL
-          </button>
-        </header>
-        <div className="flex justify-start flex-wrap gap-2">
-          {filters.map(({ name, id }) => (
-            <Badge
-              className="text-black cursor-pointer relative hover:line-through"
-              onClick={() => handleClose(id)}
-              key={id}
+        <Button
+          className="absolute top-1/2 transform -translate-y-1/2 right-0 border"
+          size="icon"
+          variant="secondary"
+          onClick={() => setIsSidebarOpen((prev) => !prev)}
+        >
+          <ChevronLeft />
+        </Button>
+        <div>
+          <header className="flex justify-between items-center mb-2">
+            <h2 className="font-bold text-lg">Filters</h2>
+            <button
+              className="text-sm"
+              onClick={() => setFilters([])} // Clear all filters
             >
-              {name}
-            </Badge>
-          ))}
-        </div>
-      </div>
-      <div>
-        <header className={`flex justify-between items-start my-2`}>
-          <h2 className="font-bold text-lg">Price</h2>
-          <p>Max : {maxPrice} &#8377;</p>
-        </header>
-        <div>
-          <Slider
-            defaultValue={[3000]}
-            max={10000}
-            step={2}
-            className={`${
-              isSidebarOpen ? "opacity-100" : "opacity-0 md:opacity-100"
-            }`}
-            onValueChange={(e) => setMaxPrice(e)}
-          />
-        </div>
-      </div>
-      <div className="border-b">
-        <header className="flex justify-between items-start my-2">
-          <h2 className="font-bold text-lg">Brands</h2>
-        </header>
-        <div>
-          <Input
-            type="text"
-            placeholder="Search Brands"
-            value={brandName}
-            onChange={(e) => setBrandName(e.target.value)}
-          />
-          <div>
-            <ScrollArea className="h-[200px] w-full">
-              {brands.map((brand) => (
-                <div
-                  key={brand._id}
-                  className={`flex items-center ps-2 ${
-                    brand.title
-                      .toLocaleLowerCase()
-                      .includes(brandName.toLocaleLowerCase())
-                      ? ""
-                      : "hidden"
-                  }`}
-                >
-                  <input
-                    id={brand._id}
-                    type="checkbox"
-                    value={brand.title}
-                    checked={filters.some((filter) => filter.id === brand._id)}
-                    onChange={() => handleCheckboxChange(brand)}
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                  />
-                  <label
-                    htmlFor={brand._id}
-                    className="w-full py-1 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
-                  >
-                    {brand.title}
-                  </label>
-                </div>
-              ))}
-            </ScrollArea>
+              CLEAR ALL
+            </button>
+          </header>
+          <div className="flex justify-start flex-wrap gap-2">
+            {filters.map(({ name, id }) => (
+              <Badge
+                className="text-black cursor-pointer relative hover:line-through"
+                onClick={() => handleClose(id)}
+                key={id}
+              >
+                {name}
+              </Badge>
+            ))}
           </div>
         </div>
-      </div>
+        <div>
+          <header className={`flex justify-between items-start my-2`}>
+            <h2 className="font-bold text-lg">Price</h2>
+            <p>Max : {maxPrice} &#8377;</p>
+          </header>
+          <div>
+            <Slider
+              defaultValue={[3000]}
+              max={10000}
+              step={2}
+              className={`${
+                isSidebarOpen ? "opacity-100" : "opacity-0 md:opacity-100"
+              }`}
+              onValueChange={(e) => setMaxPrice(e)}
+            />
+          </div>
+        </div>
+        <div className="border-b">
+          <header className="flex justify-between items-start my-2">
+            <h2 className="font-bold text-lg">Brands</h2>
+          </header>
+          <div>
+            <Input
+              type="text"
+              placeholder="Search Brands"
+              value={brandName}
+              onChange={(e) => setBrandName(e.target.value)}
+            />
+            <div>
+              <ScrollArea className="h-[200px] w-full">
+                {brands.map((brand) => (
+                  <div
+                    key={brand._id}
+                    className={`flex items-center ps-2 ${
+                      brand.title
+                        .toLocaleLowerCase()
+                        .includes(brandName.toLocaleLowerCase())
+                        ? ""
+                        : "hidden"
+                    }`}
+                  >
+                    <input
+                      id={brand._id}
+                      type="checkbox"
+                      value={brand.title}
+                      checked={filters.some(
+                        (filter) => filter.id === brand._id
+                      )}
+                      onChange={() => handleCheckboxChange(brand)}
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    />
+                    <label
+                      htmlFor={brand._id}
+                      className="w-full py-1 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      {brand.title}
+                    </label>
+                  </div>
+                ))}
+              </ScrollArea>
+            </div>
+          </div>
+        </div>
 
-      <div className="border-b">
-        <header className="flex justify-between items-start my-2">
-          <h2 className="font-bold text-lg">Categories</h2>
-        </header>
-        <div>
-          <Input
-            type="text"
-            placeholder="Search categories"
-            value={categoryName}
-            onChange={(e) => setCategoryName(e.target.value)}
-          />
+        <div className="border-b">
+          <header className="flex justify-between items-start my-2">
+            <h2 className="font-bold text-lg">Categories</h2>
+          </header>
           <div>
-            <ScrollArea className="h-[200px] w-full">
-              {categorys.map((category) => (
-                <div
-                  key={category._id}
-                  className={`flex items-center ps-2 ${
-                    category.title
-                      .toLocaleLowerCase()
-                      .includes(categoryName.toLocaleLowerCase())
-                      ? ""
-                      : "hidden"
-                  }`}
-                >
-                  <input
-                    id={category._id}
-                    type="checkbox"
-                    value={category.title}
-                    checked={filters.some(
-                      (filter) => filter.id === category._id
-                    )}
-                    onChange={() => handleCheckboxChange(category)}
-                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
-                  />
-                  <label
-                    htmlFor={category._id}
-                    className="w-full py-1 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+            <Input
+              type="text"
+              placeholder="Search categories"
+              value={categoryName}
+              onChange={(e) => setCategoryName(e.target.value)}
+            />
+            <div>
+              <ScrollArea className="h-[200px] w-full">
+                {categorys.map((category) => (
+                  <div
+                    key={category._id}
+                    className={`flex items-center ps-2 ${
+                      category.title
+                        .toLocaleLowerCase()
+                        .includes(categoryName.toLocaleLowerCase())
+                        ? ""
+                        : "hidden"
+                    }`}
                   >
-                    {category.title}
-                  </label>
-                </div>
-              ))}
-            </ScrollArea>
+                    <input
+                      id={category._id}
+                      type="checkbox"
+                      value={category.title}
+                      checked={filters.some(
+                        (filter) => filter.id === category._id
+                      )}
+                      onChange={() => handleCheckboxChange(category)}
+                      className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
+                    />
+                    <label
+                      htmlFor={category._id}
+                      className="w-full py-1 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+                    >
+                      {category.title}
+                    </label>
+                  </div>
+                ))}
+              </ScrollArea>
+            </div>
           </div>
         </div>
-      </div>
-    </ScrollArea>
+      </ScrollArea>
+    </>
   );
 };
 

@@ -71,7 +71,7 @@
 
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground ;
   }
   .breakpoint{
     @apply px-1 md:px-20 lg:px-32 ;

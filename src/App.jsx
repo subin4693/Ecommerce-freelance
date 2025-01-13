@@ -4,7 +4,7 @@ import { Home, Shop, BrandStory, FoundersNote, Signin, Signup } from "./pages";
 import { Layout, AuthLayout } from "./layouts";
 const App = () => {
   return (
-    <div className="bg-[#fdfaff] min-h-screen">
+    <div className="bg-[#fdfaff] min-h-screen max-h-screen   ">
       <Routes>
         <Route path="auth" element={<AuthLayout />}>
           <Route path="signin" element={<Signin />} />

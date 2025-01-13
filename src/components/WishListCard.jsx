@@ -2,7 +2,7 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { Minus, X, Plus, Heart } from "lucide-react";
 
-import React from "react";
+import React, { useState } from "react";
 const WishListCard = ({
   _id,
   image,
@@ -13,6 +13,12 @@ const WishListCard = ({
   brand,
   handleQuantityChange,
 }) => {
+  const [quantaty, setQuantaty] = useState(0);
+
+  const changeQuantity = (isIncrement) => {
+    setQuantaty(isIncrement ? quantaty + 1 : quantaty - 1);
+  };
+
   return (
     <Card className="flex gap-2 relative group  ">
       {/* Image Container */}
@@ -23,7 +29,7 @@ const WishListCard = ({
       {/* Card Content */}
       <div className="p-2 space-y-[1px] w-full flex flex-col">
         <div className="flex-1">
-          <h2 className="font-semibold line-clamp-2">{name}</h2>
+          <h2 className="font-semibold line-clamp-1">{name}</h2>
           <div className="flex justify-between items-center">
             <p className="line-clamp-1 text-sm font-bold">{brand}</p>
             <h3 className="text-sm font-semibold">Price: &#x20B9;{price} </h3>
@@ -31,34 +37,46 @@ const WishListCard = ({
         </div>
         {/* <p className="line-clamp-1 text-xs">{description}</p> */}
 
-        {/* {quantity && (
-          <div className="flex gap-2 items-center">
-            <h3 className="text-xs font-bold">Quantity:</h3>
-            <div className="flex gap-2 items-center">
+        <div className="flex justify-between items-center">
+          {quantaty > 0 ? (
+            <div className="flex justify-center items-center gap-2">
               <Button
                 size="icon"
                 variant="outline"
-                className="w-5 h-5 flex justify-center items-center"
-                onClick={() => handleQuantityChange(_id, false)}
+                className="w-8 h-8 flex justify-center items-center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  changeQuantity(false);
+                }}
               >
                 <Minus />
               </Button>
-              {quantity}
+              <span>{quantaty}</span>
+
               <Button
                 size="icon"
                 variant="outline"
-                className="w-5 h-5 flex justify-center items-center"
-                onClick={() => handleQuantityChange(_id, true)}
+                className="w-8 h-8 flex justify-center items-center"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  changeQuantity(true);
+                }}
               >
+                {" "}
                 <Plus />
               </Button>
             </div>
-          </div>
-        )} */}
-        <div className="flex justify-between items-center">
-          <Button className="duration-100 bg-[#C481AF] hover:bg-[#C481AF] p-1 h-7 text-xs text-black flex justify-center items-center  rounded-md  px-3">
-            <Plus size="15px" /> Add
-          </Button>
+          ) : (
+            <Button
+              className="duration-100 bg-[#C481AF] hover:bg-[#C481AF] p-1 h-7 text-xs text-black flex justify-center items-center  rounded-md  px-3"
+              onClick={(e) => {
+                e.stopPropagation();
+                changeQuantity(true);
+              }}
+            >
+              <Plus size="15px" /> Add
+            </Button>
+          )}
 
           <Heart className="text-red-500 " fill="red" />
         </div>

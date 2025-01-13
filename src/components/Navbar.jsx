@@ -233,12 +233,20 @@ const Navbar = () => {
               <SheetTitle className="flex items-center">
                 <ShoppingCart /> &nbsp;Your Cart
               </SheetTitle>
-              <SheetDescription className="text-gray-700">
+              {/* <SheetDescription className="text-gray-700">
                 Review the items in your cart before proceeding to checkout. You
                 can adjust quantities or remove items as needed. Happy shopping!
-              </SheetDescription>
+              </SheetDescription> */}
             </SheetHeader>
             <Button className="w-full text-stone-900 mt-5">Checkout</Button>
+
+            <div className="mt-2 flex justify-between items-center ">
+              <Button variant="outline">
+                <ShoppingCart /> 14
+              </Button>
+              <Button variant="secondary"> &#x20B9;1500</Button>
+            </div>
+
             <div className="space-y-3 mt-3">
               {carts.map(
                 ({ _id, image, name, description, price, quantity, brand }) => {
@@ -368,11 +376,21 @@ const Navbar = () => {
                       <SheetTitle className="flex items-center">
                         <ShoppingCart /> &nbsp;Your Cart
                       </SheetTitle>
-                      <SheetDescription className="text-gray-700">
+                      {/* <SheetDescription className="text-gray-700">
                         Review the items in your cart before proceeding to
                         checkout. You can adjust quantities or remove items as
                         needed. Happy shopping!
-                      </SheetDescription>
+                      </SheetDescription> */}
+                      <Button className="w-full text-stone-900 mt-5">
+                        Checkout
+                      </Button>
+
+                      <div className="mt-2 flex justify-between items-center ">
+                        <Button variant="outline">
+                          <ShoppingCart /> 14
+                        </Button>
+                        <Button variant="secondary"> &#x20B9;1500</Button>
+                      </div>
                     </SheetHeader>
                     <div className="space-y-3 mt-3">
                       {carts.map(
