@@ -45,11 +45,13 @@ const ProductsCard = ({
 
   return (
     <DialogCard
+      _id={_id}
       name={name}
       image={image}
       price={price}
       description={description}
       brand={brand}
+      quantity={quantity}
     >
       <Card className="relative flex flex-col overflow-hidden shadow-lg rounded-lg border p-4 group hover:border hover:border-primary shadow-sm hover:shadow-lg duration-200 shadow-primary h-full">
         <div className="flex flex-col flex-1  ">
@@ -122,9 +124,33 @@ const ProductsCard = ({
   );
 };
 
-const DialogCard = ({ children, name, image, price, description, brand }) => {
+const DialogCard = ({
+  children,
+  _id,
+  name,
+  image,
+  price,
+  description,
+  quantity,
+  brand,
+}) => {
   const images = [image, image, image, image, image, image];
   const [currentImage, setCurrentImage] = useState(images[0]);
+
+  const dispatch = useDispatch();
+
+  const handleWishList = (e) => {
+    e.stopPropagation();
+    dispatch(addToWishList(_id));
+  };
+
+  const changeQuantity = (isIncrement) => {
+    if (isIncrement) {
+      dispatch(addQuantity(_id));
+    } else {
+      dispatch(seperateQuantity(_id));
+    }
+  };
 
   return (
     <Dialog>
@@ -158,12 +184,52 @@ const DialogCard = ({ children, name, image, price, description, brand }) => {
               {description}
             </DialogDescription>
             <DialogTitle>Price : {price}</DialogTitle>
-            <div className="flex gap-2 ">
-              <Button className="flex-1 text-black  ">Add to cart</Button>
+
+            <div className="flex gap-2    pt-5 ">
+              {quantity && quantity > 0 ? (
+                <div className="flex  items-center gap-2 flex-1">
+                  <Button
+                    size={"icon"}
+                    variant="secondary"
+                    className="hover:shadow-sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      changeQuantity(false);
+                    }}
+                  >
+                    <Minus />
+                  </Button>
+                  <span>{quantity}</span>
+
+                  <Button
+                    size={"icon"}
+                    variant="secondary"
+                    className="hover:shadow-sm"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      changeQuantity(true);
+                    }}
+                  >
+                    <Plus />
+                  </Button>
+                </div>
+              ) : (
+                <Button
+                  className="flex-1 text-black  "
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    changeQuantity(true);
+                  }}
+                >
+                  Add to cart
+                </Button>
+              )}
+
               <Button
                 className="text-black hover:bg-destructive"
                 variant="outline"
                 size="icon"
+                onClick={handleWishList}
               >
                 <Heart />
               </Button>

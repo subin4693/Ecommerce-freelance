@@ -1,72 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import React, { useState } from "react";
+import React from "react";
 import { Heart, ShoppingCart } from "lucide-react";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { addQuantity, addToWishList } from "@/features/products/productSlice";
 
 const RecentProducts = () => {
-  const [products, setProducts] = useState([
-    {
-      name: "Dress One",
-      price: "500",
-      description:
-        "Description for the product Description for the productDescription for the productDescription for the productDescription for the productDescription for the productDescription for the product",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress Two",
-      price: "600",
-      description: "Another description for the product",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      description:
-        "Description for the product Description for the productDescription for the productDescription for the productDescription for the productDescription for the productDescription for the product",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress Two",
-      price: "600",
-      description: "Another description for the product",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      description:
-        "Description for the product Description for the productDescription for the productDescription for the productDescription for the productDescription for the productDescription for the product",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress Two",
-      price: "600",
-      description: "Another description for the product",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      description:
-        "Description for the product Description for the productDescription for the productDescription for the productDescription for the productDescription for the productDescription for the product",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress Two",
-      price: "600",
-      description: "Another description for the product",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-  ]);
+  const products = useSelector((state) => state?.products?.products);
 
   return (
     <motion.div
@@ -80,11 +21,13 @@ const RecentProducts = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 p-6">
-        {products?.map(({ name, image, price, description }, index) => {
+        {products?.map(({ _id, name, image, price, description, quantity }) => {
           return (
             <Cards
-              key={index}
+              key={_id}
+              _id={_id}
               name={name}
+              quantity={quantity}
               image={image}
               price={price}
               description={description}
@@ -96,7 +39,15 @@ const RecentProducts = () => {
   );
 };
 
-const Cards = ({ name, image, price, description }) => {
+const Cards = ({ _id, quantity, name, image, price, description }) => {
+  const dispatch = useDispatch();
+  const changeQuantity = () => {
+    dispatch(addQuantity(_id));
+  };
+
+  const addToWish = () => {
+    dispatch(addToWishList(_id));
+  };
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -114,10 +65,18 @@ const Cards = ({ name, image, price, description }) => {
         <p className="text-sm mb-2 line-clamp-2">{description}</p>
         <p className="text-green-600 font-bold  ">&#x20B9; {price}</p>
         <div className="flex absolute top-8 right-8 gap-2 opacity-0 group-hover:opacity-100 duration-200">
-          <Button size="icon" className="hover:bg-purple-900">
+          <Button
+            size="icon"
+            className="hover:bg-purple-900"
+            onClick={changeQuantity}
+          >
             <ShoppingCart />
           </Button>
-          <Button size="icon" className="hover:bg-purple-900">
+          <Button
+            size="icon"
+            className="hover:bg-purple-900"
+            onClick={addToWish}
+          >
             <Heart />
           </Button>
         </div>

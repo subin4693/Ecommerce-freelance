@@ -42,22 +42,6 @@ const Navbar = () => {
 
   let wishList = useSelector((state) => state?.products?.wishlist);
 
-  const handleQuantityChange = (id, increment) => {
-    setCarts((prev) => {
-      return prev.map((item) => {
-        if (item._id == id) {
-          const updatedQuantity = increment
-            ? item.quantity + 1
-            : item.quantity - 1;
-          return {
-            ...item,
-            quantity: updatedQuantity > 0 ? updatedQuantity : 1,
-          };
-        }
-        return item;
-      });
-    });
-  };
   return (
     <header
       id="navbar"
@@ -156,7 +140,6 @@ const Navbar = () => {
                       price={price}
                       quantity={quantity}
                       brand={brand}
-                      handleQuantityChange={handleQuantityChange}
                     />
                   );
                 }
@@ -308,7 +291,6 @@ const Navbar = () => {
                             price={price}
                             quantity={quantity}
                             brand={brand}
-                            handleQuantityChange={handleQuantityChange}
                           />
                         )
                       )}{" "}
