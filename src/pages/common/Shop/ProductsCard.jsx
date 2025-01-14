@@ -5,6 +5,7 @@ import { Heart, Minus, Plus } from "lucide-react";
 import {
   addQuantity,
   addToWishList,
+  removeFromWishList,
   seperateQuantity,
 } from "@/features/products/productSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -27,12 +28,17 @@ const ProductsCard = ({
   brand,
   isOutOfStock,
   quantity,
+  isInWishList,
 }) => {
   const dispatch = useDispatch();
 
   const handleWishList = (e) => {
     e.stopPropagation();
-    dispatch(addToWishList(_id));
+    if (isInWishList) {
+      dispatch(removeFromWishList(_id));
+    } else {
+      dispatch(addToWishList(_id));
+    }
   };
 
   const changeQuantity = (isIncrement) => {
@@ -65,7 +71,9 @@ const ProductsCard = ({
             onClick={handleWishList}
           >
             <Heart
-              className=" hover:fill-destructive transition-colors duration-200"
+              className={` hover:fill-destructive transition-colors duration-200 ${
+                isInWishList ? "fill-destructive " : ""
+              }`}
               size={20}
             />
           </button>

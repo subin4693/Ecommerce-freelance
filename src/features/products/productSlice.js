@@ -126,7 +126,18 @@ export const productSlice = createSlice({
       const wishlistIndex = state.wishlist.findIndex((prod) => prod._id == id);
       if (wishlistIndex != -1) return;
 
-      const productIndex = state.products.findIndex((prod) => prod._id == id);
+      let productIndex = -1;
+      state.products = state.products.map((prod, index) => {
+        if (prod._id === id) {
+          productIndex = index;
+          return {
+            ...prod,
+            isInWishList: true,
+          };
+        }
+        return prod;
+      });
+
       state.wishlist.push({ ...state.products[productIndex] });
     },
 
@@ -135,6 +146,16 @@ export const productSlice = createSlice({
       console.log(id);
       const wishlistIndex = state.wishlist.findIndex((prod) => prod._id == id);
       if (wishlistIndex == -1) return;
+
+      state.products = state.products.map((prod) => {
+        if (prod._id === id) {
+          return {
+            ...prod,
+            isInWishList: false,
+          };
+        }
+        return prod;
+      });
 
       state.wishlist.splice(wishlistIndex, 1);
     },

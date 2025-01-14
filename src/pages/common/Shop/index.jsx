@@ -82,6 +82,7 @@ const Shop = () => {
                 brand,
                 isOutOfStock,
                 quantity,
+                isInWishList,
               }) => {
                 return (
                   <ProductsCard
@@ -93,6 +94,7 @@ const Shop = () => {
                     brand={brand}
                     isOutOfStock={isOutOfStock}
                     quantity={quantity}
+                    isInWishList={isInWishList}
                   />
                 );
               }

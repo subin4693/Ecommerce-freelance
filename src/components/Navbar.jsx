@@ -123,9 +123,16 @@ const Navbar = () => {
 
             <div className="mt-2 flex justify-between items-center ">
               <Button variant="outline">
-                <ShoppingCart /> 14
+                <ShoppingCart /> {carts.length}
               </Button>
-              <Button variant="secondary"> &#x20B9;1500</Button>
+              <Button variant="secondary">
+                {" "}
+                &#x20B9;
+                {carts.reduce(
+                  (total, item) => total + item.price * (item.quantity || 1),
+                  0
+                )}
+              </Button>
             </div>
 
             <div className="space-y-3 mt-3">
