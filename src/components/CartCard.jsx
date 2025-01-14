@@ -1,22 +1,27 @@
-import { Minus, X, Plus, Trash2 } from "lucide-react";
+import { Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
-import React, { useState } from "react";
+import React from "react";
+import {
+  addQuantity,
+  seperateQuantity,
+  removeFromCart,
+} from "@/features/products/productSlice";
+import { useDispatch } from "react-redux";
 
-const CartCard = ({
-  _id,
-  image,
-  name,
-  description,
-  quantity,
-  price,
-  brand,
-  handleQuantityChange,
-}) => {
-  const [quantaty, setQuantaty] = useState(0);
+const CartCard = ({ _id, image, name, quantity, price, brand }) => {
+  const dispatch = useDispatch();
 
   const changeQuantity = (isIncrement) => {
-    setQuantaty(isIncrement ? quantaty + 1 : quantaty - 1);
+    if (isIncrement) {
+      dispatch(addQuantity(_id));
+    } else {
+      dispatch(seperateQuantity(_id));
+    }
+  };
+
+  const removeProductFromCart = () => {
+    dispatch(removeFromCart(_id));
   };
   return (
     <Card className="flex gap-2 relative group  ">
@@ -45,7 +50,7 @@ const CartCard = ({
               >
                 <Minus />
               </Button>
-              <span>{quantaty}</span>
+              <span>{quantity}</span>
 
               <Button
                 size="icon"
@@ -65,6 +70,7 @@ const CartCard = ({
             className="w-7 h-7 duration-300 opacity-0  opacity-100  ease-in-out hover:bg-destructive hover:text-white"
             variant="destructive"
             size="icon"
+            onClick={removeProductFromCart}
           >
             <Trash2 />
           </Button>

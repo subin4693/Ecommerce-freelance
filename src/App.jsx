@@ -1,4 +1,3 @@
-import React from "react";
 import { Routes, Route } from "react-router";
 import { Home, Shop, BrandStory, FoundersNote, Signin, Signup } from "./pages";
 import { Layout, AuthLayout } from "./layouts";

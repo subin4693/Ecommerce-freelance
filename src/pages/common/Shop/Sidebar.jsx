@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 
-const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
+const Sidebar = ({ isSidebarOpen, setSidebarState }) => {
   const [filters, setFilters] = useState([]);
   const [categoryName, setCategoryName] = useState("");
   const [brandName, setBrandName] = useState("");
@@ -79,7 +79,7 @@ const Sidebar = ({ isSidebarOpen, setIsSidebarOpen }) => {
           className="absolute top-1/2 transform -translate-y-1/2 right-0 border"
           size="icon"
           variant="secondary"
-          onClick={() => setIsSidebarOpen((prev) => !prev)}
+          onClick={setSidebarState}
         >
           <ChevronLeft />
         </Button>

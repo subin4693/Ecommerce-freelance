@@ -8,15 +8,7 @@ import CartCard from "./CartCard";
 import WishListCard from "./WishListCard";
 
 import { NavLink } from "react-router";
-import {
-  ArrowBigRight,
-  Heart,
-  MenuIcon,
-  Minus,
-  Plus,
-  ShoppingCart,
-  X,
-} from "lucide-react";
+import { ArrowBigRight, Heart, MenuIcon, ShoppingCart, X } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -43,107 +35,12 @@ import {
 } from "@/components/ui/drawer";
 
 import { Button } from "./ui/button";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const [carts, setCarts] = useState([
-    {
-      _id: "sdfas",
-      image: HUMANOODLES,
-      name: `Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-      brand: "Nike",
-    },
-    {
-      _id: "sdfaasdfas",
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: `                Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      price: 200,
-      brand: "Adidas",
-    },
-    {
-      _id: "sdfas",
-      image: HUMANOODLES,
-      name: `Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-      brand: "Nike",
-    },
-    {
-      _id: "sdfaasdfas",
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: `                Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      price: 200,
-      brand: "Adidas",
-    },
-    {
-      _id: "sdfas",
-      image: HUMANOODLES,
-      name: `Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      quantity: 1,
-      description: "something about this product",
-      price: 200,
-      brand: "Nike",
-    },
-    {
-      _id: "sdfaasdfas",
-      image: HUMANOODLES,
-      name: "Product one",
-      quantity: 1,
-      description: `                Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      price: 200,
-      brand: "Adidas",
-    },
-  ]);
-  const [wishList, setWishList] = useState([
-    {
-      image: HUMANOODLES,
-      name: `Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
+  let carts = useSelector((state) => state?.products?.cart);
 
-      description: "something about this product",
-      price: 200,
-      brand: "Nike",
-    },
-
-    {
-      image: HUMANOODLES,
-      name: "Product one",
-
-      description: `                Explore and manage your favorite products in your wish list.
-                Keep track of the items you love and easily add them to your
-                cart when you're ready to purchase. Happy browsing!`,
-      price: 200,
-      brand: "Nike",
-    },
-    {
-      image: HUMANOODLES,
-      name: "Product one",
-
-      description: "something about this product",
-      price: 200,
-      brand: "Nike",
-    },
-  ]);
+  let wishList = useSelector((state) => state?.products?.wishlist);
 
   const handleQuantityChange = (id, increment) => {
     setCarts((prev) => {
@@ -250,7 +147,6 @@ const Navbar = () => {
             <div className="space-y-3 mt-3">
               {carts.map(
                 ({ _id, image, name, description, price, quantity, brand }) => {
-                  console.log(_id + " working fine ---<");
                   return (
                     <CartCard
                       _id={_id}
@@ -293,9 +189,10 @@ const Navbar = () => {
               </SheetDescription>
             </SheetHeader>
             <div className="space-y-3  mt-3">
-              {wishList.map(
-                ({ image, name, description, quantity, price, brand }) => (
+              {wishList?.map(
+                ({ _id, image, name, description, quantity, price, brand }) => (
                   <WishListCard
+                    _id={_id}
                     image={image}
                     name={name}
                     description={description}
@@ -453,8 +350,16 @@ const Navbar = () => {
                     </SheetHeader>
                     <div className="space-y-3  mt-3">
                       {wishList.map(
-                        ({ image, name, description, quantity, price }) => (
+                        ({
+                          _id,
+                          image,
+                          name,
+                          description,
+                          quantity,
+                          price,
+                        }) => (
                           <WishListCard
+                            _id={_id}
                             image={image}
                             name={name}
                             description={description}

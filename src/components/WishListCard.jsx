@@ -1,22 +1,27 @@
+import { useDispatch } from "react-redux";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
-import { Minus, X, Plus, Heart } from "lucide-react";
+import { Minus, Plus, Heart } from "lucide-react";
 
-import React, { useState } from "react";
-const WishListCard = ({
-  _id,
-  image,
-  name,
-  description,
-  quantity,
-  price,
-  brand,
-  handleQuantityChange,
-}) => {
-  const [quantaty, setQuantaty] = useState(0);
+import React from "react";
+import {
+  addQuantity,
+  seperateQuantity,
+  removeFromWishList,
+} from "@/features/products/productSlice";
+const WishListCard = ({ _id, image, name, quantity, price, brand }) => {
+  const dispatch = useDispatch();
 
   const changeQuantity = (isIncrement) => {
-    setQuantaty(isIncrement ? quantaty + 1 : quantaty - 1);
+    if (isIncrement) {
+      dispatch(addQuantity(_id));
+    } else {
+      dispatch(seperateQuantity(_id));
+    }
+  };
+
+  const removeProduct = () => {
+    dispatch(removeFromWishList(_id));
   };
 
   return (
@@ -38,7 +43,7 @@ const WishListCard = ({
         {/* <p className="line-clamp-1 text-xs">{description}</p> */}
 
         <div className="flex justify-between items-center">
-          {quantaty > 0 ? (
+          {quantity && quantity > 0 ? (
             <div className="flex justify-center items-center gap-2">
               <Button
                 size="icon"
@@ -51,7 +56,7 @@ const WishListCard = ({
               >
                 <Minus />
               </Button>
-              <span>{quantaty}</span>
+              <span>{quantity}</span>
 
               <Button
                 size="icon"
@@ -77,16 +82,10 @@ const WishListCard = ({
               <Plus size="15px" /> Add
             </Button>
           )}
-
-          <Heart className="text-red-500 " fill="red" />
+          <button onClick={removeProduct}>
+            <Heart className="text-red-500 " fill="red" />
+          </button>
         </div>
-        <Button
-          variant="outline"
-          size="icon"
-          className="absolute top-2 right-2 opacity-0 group-hover:opacity-100 duration-200 ease-in-out hover:bg-destructive hover:text-white w-5 h-5"
-        >
-          <X />
-        </Button>
       </div>
     </Card>
   );

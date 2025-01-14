@@ -1,7 +1,13 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import React, { useState } from "react";
-import { Heart, Minus, Plus, ShoppingBasket } from "lucide-react";
+import { Heart, Minus, Plus } from "lucide-react";
+import {
+  addQuantity,
+  addToWishList,
+  seperateQuantity,
+} from "@/features/products/productSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 import {
   Dialog,
@@ -13,20 +19,28 @@ import {
 } from "@/components/ui/dialog";
 
 const ProductsCard = ({
+  _id,
   name,
   image,
   price,
   description,
   brand,
   isOutOfStock,
+  quantity,
 }) => {
-  const [quantaty, setQuantaty] = useState(0);
+  const dispatch = useDispatch();
+
   const handleWishList = (e) => {
     e.stopPropagation();
+    dispatch(addToWishList(_id));
   };
 
   const changeQuantity = (isIncrement) => {
-    setQuantaty(isIncrement ? quantaty + 1 : quantaty - 1);
+    if (isIncrement) {
+      dispatch(addQuantity(_id));
+    } else {
+      dispatch(seperateQuantity(_id));
+    }
   };
 
   return (
@@ -63,7 +77,7 @@ const ProductsCard = ({
           {/* <p className="text-sm mb-2 line-clamp-2 text-left ">{description}</p> */}
           <div className="flex items-center justify-between">
             <p className=" text-lg font-bold text-left "> &#x20B9; {price}</p>{" "}
-            {quantaty > 0 ? (
+            {quantity && quantity > 0 ? (
               <div className="flex justify-center items-center gap-2">
                 <Button
                   size={"icon"}
@@ -76,7 +90,7 @@ const ProductsCard = ({
                 >
                   <Minus />
                 </Button>
-                <span>{quantaty}</span>
+                <span>{quantity}</span>
 
                 <Button
                   size={"icon"}
@@ -87,7 +101,6 @@ const ProductsCard = ({
                     changeQuantity(true);
                   }}
                 >
-                  {" "}
                   <Plus />
                 </Button>
               </div>

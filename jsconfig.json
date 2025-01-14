@@ -1,11 +1,10 @@
 {
-    "compilerOptions": {
+  "compilerOptions": {
       "baseUrl": ".",
       "paths": {
-        "@/*": ["src/*"] // Maps '@/' to 'src/'
+        "@/*": [
+          "./src/*"
+        ]
       }
-    },
-    "include": ["src/**/*"], // Include all JavaScript files in 'src'
-    "exclude": ["node_modules", "dist"] // Exclude 'node_modules' and 'dist'
   }
-  
+}

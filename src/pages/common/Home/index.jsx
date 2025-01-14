@@ -32,7 +32,6 @@ const Home = () => {
       behavior: "smooth",
     });
   };
-  console.log(showButton);
 
   const mainRef = useRef(null);
   return (

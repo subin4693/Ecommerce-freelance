@@ -1,105 +1,30 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "./Sidebar";
 import { motion } from "framer-motion";
 import ProductsCard from "./ProductsCard";
 import { Input } from "@/components/ui/input";
 import { Filter, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { useSelector } from "react-redux";
+
 const Shop = () => {
-  const [products, setProducts] = useState([
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: true,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: false,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: false,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: false,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: false,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: true,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: false,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: true,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-    {
-      name: "Dress One",
-      price: "500",
-      brand: "Adidas",
-      isOutOfStock: false,
-      description:
-        "Description for the product Description for the productDesc ription for the pr oductDescription for theproductDescr iption for the productDescription for  Description for the pro ductDescription for the productDesc ription for  ",
-      image:
-        "https://olliesplace.com.au/cdn/shop/files/IPBG2271-BK-baby-girls-blue-rosel-dress-online-sale_eb8f7d1f-2143-4b84-a5c3-78fd2a33b48b.jpg?v=1722494617&width=533",
-    },
-  ]);
+  const products = useSelector((state) => state?.products?.products);
+
   const [sidebar, setSidebar] = useState(false);
+
+  const setSidebarState = () => {
+    setSidebar((prev) => {
+      localStorage.setItem("sidebarStatus", !prev);
+
+      return !prev;
+    });
+  };
+
+  useEffect(() => {
+    let sidebarStatus = localStorage.getItem("sidebarStatus");
+    setSidebar(sidebarStatus == "true");
+  }, []);
+
   return (
     <div className="flex  h-full w-full   py-5 ">
       {/* {sidebar && (
@@ -109,7 +34,7 @@ const Shop = () => {
         />
       )} */}
       <div className="min-h-[50vh] fixed z-[5] bg-white mt-[40px]  bottom-0 top-0 pt-10  ">
-        <Sidebar isSidebarOpen={sidebar} setIsSidebarOpen={setSidebar} />
+        <Sidebar isSidebarOpen={sidebar} setSidebarState={setSidebarState} />
       </div>
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -126,7 +51,7 @@ const Shop = () => {
             <Button
               variant="outline"
               size="icon"
-              onClick={() => setSidebar((prev) => !prev)}
+              onClick={setSidebarState}
               className="absolute left-6"
             >
               <Filter />
@@ -148,15 +73,26 @@ const Shop = () => {
             } `}
           >
             {products.map(
-              ({ name, image, price, description, brand, isOutOfStock }) => {
+              ({
+                _id,
+                name,
+                image,
+                price,
+                description,
+                brand,
+                isOutOfStock,
+                quantity,
+              }) => {
                 return (
                   <ProductsCard
+                    _id={_id}
                     name={name}
                     image={image}
                     price={price}
                     description={description}
                     brand={brand}
                     isOutOfStock={isOutOfStock}
+                    quantity={quantity}
                   />
                 );
               }
