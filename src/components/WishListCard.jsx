@@ -73,7 +73,7 @@ const WishListCard = ({ _id, image, name, quantity, price, brand }) => {
             </div>
           ) : (
             <Button
-              className="duration-100 bg-[#C481AF] hover:bg-[#C481AF] p-1 h-7 text-xs text-black flex justify-center items-center  rounded-md  px-3"
+              className="duration-100 bg-[#C481AF] hover:bg-[#C481AF] p-1 h-7 text-xs   flex justify-center items-center  rounded-md  px-3"
               onClick={(e) => {
                 e.stopPropagation();
                 changeQuantity(true);

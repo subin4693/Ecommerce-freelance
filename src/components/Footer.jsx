@@ -46,7 +46,7 @@ const Footer = () => {
             className="w-full md:w-[350px]"
           />
           <Textarea placeholder="Enter message here..." />
-          <Button className="w-full text-white">Submit</Button>
+          <Button className="w-full  ">Submit</Button>
         </form>
       </div>
       <div className="w-full text-center mt-6 text-sm text-gray-500">

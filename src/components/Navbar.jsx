@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import logo from "@/assets/logo-bg-r.png";
-import HUMANOODLES from "@/assets/HUMANOODLES.jpg";
+
 import HUMANOODLES5 from "@/assets/HUMANOODLES5.jpg";
 import HUMANOODLES8 from "@/assets/HUMANOODLES8.jpg";
 
@@ -8,7 +8,7 @@ import CartCard from "./CartCard";
 import WishListCard from "./WishListCard";
 
 import { NavLink } from "react-router";
-import { ArrowBigRight, Heart, MenuIcon, ShoppingCart, X } from "lucide-react";
+import { ArrowBigRight, Heart, MenuIcon, ShoppingCart } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -120,7 +120,12 @@ const Navbar = () => {
 
         <Sheet>
           <SheetTrigger>
-            <ShoppingCart />
+            <span className="relative">
+              <span className="absolute -top-2 -right-2 text-xs  bg-[#C481AF] rounded-full w-[20px] h-[20px] flex justify-center items-center">
+                {carts.length}
+              </span>
+              <ShoppingCart />
+            </span>
           </SheetTrigger>
           <SheetContent className="overflow-y-auto">
             <div
@@ -140,7 +145,7 @@ const Navbar = () => {
                 can adjust quantities or remove items as needed. Happy shopping!
               </SheetDescription> */}
             </SheetHeader>
-            <Button className="w-full text-stone-900 mt-5">Checkout</Button>
+            <Button className="w-full   mt-5">Checkout</Button>
 
             <div className="mt-2 flex justify-between items-center ">
               <Button variant="outline">
@@ -178,7 +183,13 @@ const Navbar = () => {
 
         <Sheet>
           <SheetTrigger>
-            <Heart />
+            {" "}
+            <span className="relative">
+              <span className="absolute -top-2 -right-2 text-xs  bg-[#C481AF] rounded-full w-[20px] h-[20px] flex justify-center items-center">
+                {wishList.length}
+              </span>
+              <Heart />
+            </span>
           </SheetTrigger>
           <SheetContent className="overflow-y-auto">
             <div
@@ -334,9 +345,7 @@ const Navbar = () => {
                         checkout. You can adjust quantities or remove items as
                         needed. Happy shopping!
                       </SheetDescription> */}
-                      <Button className="w-full text-stone-900 mt-5">
-                        Checkout
-                      </Button>
+                      <Button className="w-full  mt-5">Checkout</Button>
 
                       <div className="mt-2 flex justify-between items-center ">
                         <Button variant="outline">

@@ -6,7 +6,7 @@ const AdminTopbar = ({ pageTitle }) => {
     <div className="flex justify-between items-center w-full  ">
       <h1 className="text-xl font-bold">{pageTitle}</h1>
 
-      <Button className="text-xs py-1 text-black ">Logout</Button>
+      <Button className="text-xs py-1   ">Logout</Button>
     </div>
   );
 };

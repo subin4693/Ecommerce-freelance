@@ -30,9 +30,9 @@ const CartCard = ({ _id, image, name, quantity, price, brand }) => {
       </div>
 
       <div className="p-2 space-y-[1px] w-full  ">
-        <h2 className="font-semibold line-clamp-1">{name}</h2>
+        <h2 className="font-bold line-clamp-1">{name}</h2>
         <div className="flex justify-between items-center">
-          <p className="line-clamp-1 text-md font-bold">{brand}</p>
+          <p className="line-clamp-1 text-md font-semibold">{brand}</p>
           <h3 className="text-lg font-semibold"> &#x20B9; {price}</h3>
         </div>
 
