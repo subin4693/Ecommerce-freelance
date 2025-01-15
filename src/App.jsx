@@ -1,5 +1,20 @@
 import { Routes, Route } from "react-router";
-import { Home, Shop, BrandStory, FoundersNote, Signin, Signup } from "./pages";
+import {
+  Home,
+  Shop,
+  BrandStory,
+  FoundersNote,
+  Signin,
+  Signup,
+  AdminBrands,
+  AdminCategories,
+  AdminContactForm,
+  AdminDashboard,
+  AdminHomePage,
+  AdminOrders,
+  AdminPayments,
+  AdminProducts,
+} from "./pages";
 import { Layout, AuthLayout } from "./layouts";
 const App = () => {
   return (
@@ -13,9 +28,22 @@ const App = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="shop" element={<Shop />} />
-          {/* About section */}
           <Route path="about/brand-story" element={<BrandStory />} />
           <Route path="about/founders-note" element={<FoundersNote />} />
+        </Route>
+
+        {/*Admin pages */}
+
+        <Route path="/admin">
+          <Route path="dashboard" element={<AdminDashboard />} />
+          <Route path="brands" element={<AdminBrands />} />
+          <Route path="categories" element={<AdminCategories />} />
+          <Route path="orders" element={<AdminOrders />} />
+          <Route path="payments" element={<AdminPayments />} />
+          <Route path="contactform" element={<AdminContactForm />} />
+          <Route path="home-page" element={<AdminHomePage />} />
+
+          <Route path="products" element={<AdminProducts />} />
         </Route>
       </Routes>
     </div>

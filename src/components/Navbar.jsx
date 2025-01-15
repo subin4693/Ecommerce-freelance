@@ -97,6 +97,17 @@ const Navbar = () => {
           Shop
         </NavLink>
 
+        <NavLink
+          to="/admin/dashboard"
+          className={({ isActive }) => {
+            return `hover:text-[#680c9d] duration-100 transition   ${
+              isActive ? "text-[#680c9d]  " : ""
+            }`;
+          }}
+        >
+          Admin
+        </NavLink>
+
         <Sheet>
           <SheetTrigger>
             <ShoppingCart />
@@ -210,34 +221,57 @@ const Navbar = () => {
             </DrawerHeader>
             <div>
               <ul className="space-y-2 p-4">
-                <li className="cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg flex  gap-3  items-center group">
-                  <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
-                    <ArrowBigRight className="text-[#5b3b6d]" />
-                  </div>{" "}
-                  Home
+                <li>
+                  <NavLink
+                    to="/"
+                    className="cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg flex  gap-3  items-center group"
+                  >
+                    <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
+                      <ArrowBigRight className="text-[#5b3b6d]" />
+                    </div>{" "}
+                    Home
+                  </NavLink>
                 </li>
+
                 <li className="cursor-pointer p-2  ">
                   <span className="text-[#a478d9] font-bold p-2">About</span>
+
                   <ul className="ml-4 space-y-2">
-                    <li className="flex   gap-3  items-center group cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg">
-                      <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
-                        <ArrowBigRight className="text-[#5b3b6d]" />
-                      </div>{" "}
-                      Brand Story
+                    <li>
+                      <NavLink
+                        to="/about/brand-story"
+                        className="flex   gap-3  items-center group cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg"
+                      >
+                        <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
+                          <ArrowBigRight className="text-[#5b3b6d]" />
+                        </div>{" "}
+                        Brand Story{" "}
+                      </NavLink>
                     </li>
-                    <li className="flex  gap-3  items-center group  cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg">
-                      <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
-                        <ArrowBigRight className="text-[#5b3b6d]" />
-                      </div>{" "}
-                      Founders Note
+
+                    <li>
+                      <NavLink
+                        to="/about/founders-note"
+                        className="flex   gap-3  items-center group cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg"
+                      >
+                        <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
+                          <ArrowBigRight className="text-[#5b3b6d]" />
+                        </div>{" "}
+                        Founders Note
+                      </NavLink>
                     </li>
                   </ul>
                 </li>
-                <li className="cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg flex  gap-3  items-center group">
-                  <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
-                    <ArrowBigRight className="text-[#5b3b6d]" />
-                  </div>{" "}
-                  Shop
+                <li>
+                  <NavLink
+                    to="/shop"
+                    className="cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg flex  gap-3  items-center group"
+                  >
+                    <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
+                      <ArrowBigRight className="text-[#5b3b6d]" />
+                    </div>{" "}
+                    Shop
+                  </NavLink>
                 </li>
 
                 <Sheet>
@@ -301,9 +335,6 @@ const Navbar = () => {
                           />
                         )
                       )}{" "}
-                      <Button className="w-full text-stone-900">
-                        Checkout
-                      </Button>
                     </div>
                   </SheetContent>
                 </Sheet>
@@ -341,6 +372,7 @@ const Navbar = () => {
                       {wishList.map(
                         ({
                           _id,
+                          brand,
                           image,
                           name,
                           description,
@@ -348,6 +380,7 @@ const Navbar = () => {
                           price,
                         }) => (
                           <WishListCard
+                            brand={brand}
                             _id={_id}
                             image={image}
                             name={name}
