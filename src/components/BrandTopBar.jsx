@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "./ui/button";
 
-const AdminTopbar = ({ pageTitle }) => {
+const BrandTopBar = ({ pageTitle }) => {
   return (
     <div className="flex justify-between items-center w-full  ">
       <h1 className="text-xl font-bold">{pageTitle}</h1>
@@ -11,4 +11,4 @@ const AdminTopbar = ({ pageTitle }) => {
   );
 };
 
-export default AdminTopbar;
+export default BrandTopBar;

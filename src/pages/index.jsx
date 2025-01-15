@@ -16,6 +16,13 @@ import AdminPayments from "./admin/payments";
 import AdminProducts from "./admin/products";
 /*Admin pages ends */
 
+/*Brand page starts*/
+import BrandsPayments from "./brands/payments";
+import BrandsDashboard from "./brands/dashboard";
+import BrandsProducts from "./brands/products";
+import BrandsOrders from "./brands/orders";
+/*Brand page ends*/
+
 export {
   Home,
   Shop,
@@ -31,4 +38,8 @@ export {
   AdminOrders,
   AdminPayments,
   AdminProducts,
+  BrandsPayments,
+  BrandsDashboard,
+  BrandsProducts,
+  BrandsOrders,
 };

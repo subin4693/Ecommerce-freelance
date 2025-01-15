@@ -107,6 +107,16 @@ const Navbar = () => {
         >
           Admin
         </NavLink>
+        <NavLink
+          to="/brands/dashboard"
+          className={({ isActive }) => {
+            return `hover:text-[#680c9d] duration-100 transition   ${
+              isActive ? "text-[#680c9d]  " : ""
+            }`;
+          }}
+        >
+          Brands
+        </NavLink>
 
         <Sheet>
           <SheetTrigger>
@@ -282,6 +292,17 @@ const Navbar = () => {
                       <ArrowBigRight className="text-[#5b3b6d]" />
                     </div>{" "}
                     Admin
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to="/brands/dashboard"
+                    className="cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg flex  gap-3  items-center group"
+                  >
+                    <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
+                      <ArrowBigRight className="text-[#5b3b6d]" />
+                    </div>{" "}
+                    Brands
                   </NavLink>
                 </li>
 

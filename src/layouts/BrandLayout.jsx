@@ -1,13 +1,13 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
-import AdminSidebar from "@/components/AdminSidebar";
 
 import { Outlet } from "react-router";
+import BrandSidebar from "@/components/BrandSidebar";
 
-const AdminLayout = () => {
+const BrandLayout = () => {
   return (
     <div>
       <SidebarProvider>
-        <AdminSidebar />
+        <BrandSidebar />
 
         <SidebarTrigger />
         <main className=" w-full p-2">
@@ -18,4 +18,4 @@ const AdminLayout = () => {
   );
 };
 
-export default AdminLayout;
+export default BrandLayout;
