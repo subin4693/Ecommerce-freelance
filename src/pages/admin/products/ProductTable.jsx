@@ -9,28 +9,30 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Trash2, Eye } from "lucide-react";
 
 const ProductTable = () => {
   return (
     <Table>
-      <TableCaption>A list of all brands</TableCaption>
+      <TableCaption>A list of all products</TableCaption>
       <TableHeader>
         <TableRow>
-          <TableHead className="w-[100px]">Name</TableHead>
-          <TableHead>Description</TableHead>
-          <TableHead>Total Products</TableHead>
-          <TableHead className="">Options</TableHead>
+          <TableHead className="w-[100px]">Product ID</TableHead>
+          <TableHead>Name</TableHead>
+          <TableHead>Brand</TableHead>
+          <TableHead>Stock Left</TableHead>
+          <TableHead className="w-[100px]">Action</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
         <TableRow>
-          <TableCell className="font-medium">Nike</TableCell>
-          <TableCell>Description about this brand</TableCell>
-          <TableCell>product name</TableCell>
+          <TableCell>20201</TableCell>
+          <TableCell className="font-medium">Air Max 90</TableCell>
+          <TableCell>Nike</TableCell>
+          <TableCell>30</TableCell>
           <TableCell className="flex gap-2">
             <Button size="icon" variant="outline">
-              <Edit />
+              <Eye />
             </Button>
             <Button size="icon" variant="destructive">
               <Trash2 />

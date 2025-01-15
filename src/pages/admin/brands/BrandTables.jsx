@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2 } from "lucide-react";
+import { Edit, Trash2, View } from "lucide-react";
 
 const BrandTables = () => {
   return (
@@ -32,12 +32,9 @@ const BrandTables = () => {
 
           <TableCell>1500</TableCell>
 
-          <TableCell className="flex gap-2">
+          <TableCell>
             <Button size="icon" variant="outline">
-              <Edit />
-            </Button>
-            <Button size="icon" variant="destructive">
-              <Trash2 />
+              <View />
             </Button>
           </TableCell>
         </TableRow>
