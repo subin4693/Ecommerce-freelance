@@ -16,6 +16,7 @@ import {
   AdminProducts,
 } from "./pages";
 import { Layout, AuthLayout } from "./layouts";
+import AdminLayout from "./layouts/AdminLayout";
 const App = () => {
   return (
     <div className="bg-[#fdfaff] min-h-screen max-h-screen   ">
@@ -34,7 +35,7 @@ const App = () => {
 
         {/*Admin pages */}
 
-        <Route path="/admin">
+        <Route path="/admin" element={<AdminLayout />}>
           <Route path="dashboard" element={<AdminDashboard />} />
           <Route path="brands" element={<AdminBrands />} />
           <Route path="categories" element={<AdminCategories />} />

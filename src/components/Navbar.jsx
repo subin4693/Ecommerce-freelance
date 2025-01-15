@@ -273,6 +273,17 @@ const Navbar = () => {
                     Shop
                   </NavLink>
                 </li>
+                <li>
+                  <NavLink
+                    to="/admin/dashboard"
+                    className="cursor-pointer hover:bg-primary w-full duration-200 p-2 rounded-lg flex  gap-3  items-center group"
+                  >
+                    <div className="w-0 group-hover:w-[20px] overflow-hidden duration-200">
+                      <ArrowBigRight className="text-[#5b3b6d]" />
+                    </div>{" "}
+                    Admin
+                  </NavLink>
+                </li>
 
                 <Sheet>
                   <SheetTrigger className="w-full">
