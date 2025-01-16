@@ -9,9 +9,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2, Eye } from "lucide-react";
+import { Trash2, Eye, Edit } from "lucide-react";
+import ViewProduct from "./ViewProducts";
+import EditProduct from "./EditProduct";
 
-const ProductTable = () => {
+const ProductTable = ({ product }) => {
   return (
     <Table>
       <TableCaption>A list of all products</TableCaption>
@@ -21,28 +23,73 @@ const ProductTable = () => {
           <TableHead>Name</TableHead>
           <TableHead>Brand</TableHead>
           <TableHead>Stock Left</TableHead>
-          <TableHead className="w-[100px]">Action</TableHead>
+          <TableHead className="w-[100px]">View</TableHead>
+          <TableHead className="w-[100px]">Edit</TableHead>
+          <TableHead className="w-[100px]">Remove</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow>
-          <TableCell>20201</TableCell>
-          <TableCell className="font-medium">Air Max 90</TableCell>
-          <TableCell>Nike</TableCell>
-          <TableCell>30</TableCell>
-          <TableCell className="flex gap-2">
-            <Button size="icon" variant="outline">
-              <Eye />
-            </Button>
-
-            <Button size="icon" variant="outline">
-              <Edit />
-            </Button>
-            <Button size="icon" variant="destructive">
-              <Trash2 />
-            </Button>
-          </TableCell>
-        </TableRow>
+        {product?.map(
+          ({
+            _id,
+            name,
+            description,
+            category,
+            price,
+            images,
+            brand,
+            sold_out,
+            stock,
+          }) => {
+            return (
+              <TableRow>
+                <TableCell>{_id}</TableCell>
+                <TableCell className="font-medium">{name}</TableCell>
+                <TableCell>{brand?.name}</TableCell>
+                <TableCell>{sold_out}</TableCell>
+                <TableCell>
+                  <ViewProduct
+                    _id={_id}
+                    name={name}
+                    description={description}
+                    category={category}
+                    price={price}
+                    images={images}
+                    brand={brand}
+                    sold_out={sold_out}
+                    stock={stock}
+                  >
+                    <Button size="icon" variant="secondary">
+                      <Eye />
+                    </Button>
+                  </ViewProduct>
+                </TableCell>
+                <TableCell>
+                  <EditProduct
+                    _id={_id}
+                    name={name}
+                    description={description}
+                    category={category}
+                    price={price}
+                    images={images}
+                    brand={brand}
+                    sold_out={sold_out}
+                    stock={stock}
+                  >
+                    <Button size="icon" variant="outline">
+                      <Edit />
+                    </Button>
+                  </EditProduct>
+                </TableCell>
+                <TableCell>
+                  <Button size="icon" variant="destructive">
+                    <Trash2 />
+                  </Button>
+                </TableCell>
+              </TableRow>
+            );
+          }
+        )}
       </TableBody>
     </Table>
   );

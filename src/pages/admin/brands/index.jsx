@@ -1,5 +1,5 @@
 import AdminTopbar from "@/components/AdminTopbar";
-import React from "react";
+import React, { useState } from "react";
 import BrandTables from "./BrandTables";
 
 const Brands = () => {

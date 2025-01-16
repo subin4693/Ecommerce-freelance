@@ -45,8 +45,7 @@ const Navbar = () => {
   return (
     <header
       id="navbar"
-      className="flex justify-between    items-center px-1 md:px-20 lg:px-32 bg-[#e2d6fa] fixed top-0 left-0 right-0 z-10 shadow-md 
-      "
+      className="flex justify-between    items-center px-1 md:px-20 lg:px-32 bg-[#e2d6fa] fixed top-0 left-0 right-0 z-[20] shadow-md"
     >
       <div className="w-[60px] h-[60px] z-10">
         <img src={logo} className="object-fit" />

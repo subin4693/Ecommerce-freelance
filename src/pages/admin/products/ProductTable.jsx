@@ -9,9 +9,10 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
-import { Edit, Trash2, Eye } from "lucide-react";
+import { Trash2, Eye } from "lucide-react";
+import ViewProduct from "./ViewProducts";
 
-const ProductTable = () => {
+const ProductTable = ({ product }) => {
   return (
     <Table>
       <TableCaption>A list of all products</TableCaption>
@@ -21,24 +22,33 @@ const ProductTable = () => {
           <TableHead>Name</TableHead>
           <TableHead>Brand</TableHead>
           <TableHead>Stock Left</TableHead>
-          <TableHead className="w-[100px]">Action</TableHead>
+          <TableHead className="w-[100px]">View</TableHead>
+          <TableHead className="w-[100px]">Remove</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>
-        <TableRow>
-          <TableCell>20201</TableCell>
-          <TableCell className="font-medium">Air Max 90</TableCell>
-          <TableCell>Nike</TableCell>
-          <TableCell>30</TableCell>
-          <TableCell className="flex gap-2">
-            <Button size="icon" variant="outline">
-              <Eye />
-            </Button>
-            <Button size="icon" variant="destructive">
-              <Trash2 />
-            </Button>
-          </TableCell>
-        </TableRow>
+        {product?.map(({ _id, name, brand, sold_out }) => {
+          return (
+            <TableRow>
+              <TableCell>{_id}</TableCell>
+              <TableCell className="font-medium">{name}</TableCell>
+              <TableCell>{brand?.name}</TableCell>
+              <TableCell>{sold_out}</TableCell>
+              <TableCell className="flex gap-2">
+                <ViewProduct>
+                  <Button size="icon" variant="outline">
+                    <Eye />
+                  </Button>
+                </ViewProduct>{" "}
+              </TableCell>
+              <TableCell>
+                <Button size="icon" variant="destructive">
+                  <Trash2 />
+                </Button>
+              </TableCell>
+            </TableRow>
+          );
+        })}
       </TableBody>
     </Table>
   );

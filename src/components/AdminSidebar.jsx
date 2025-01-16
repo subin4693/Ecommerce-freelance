@@ -62,6 +62,11 @@ const items = [
     url: "/admin/home-page",
     icon: Layout,
   },
+  {
+    title: "Home page",
+    url: "/",
+    icon: Layout,
+  },
 ];
 
 const AdminSidebar = () => {
