@@ -23,27 +23,15 @@ import {
 import BrandSelect from "./BrandSelect";
 import { Plus } from "lucide-react";
 
-const EditProduct = ({
-  children,
-  _id,
-  name: nameArg,
-  description: descriptionArg,
-  category: categoryArg,
-  price: priceArg,
-  images: imagesArg,
-  brand: brandArg,
-  sold_out: sold_outArg,
-  stock: stockArg,
-  categories,
-}) => {
-  const [name, setName] = useState(nameArg);
-  const [description, setDescription] = useState(descriptionArg);
-  const [category, setCategory] = useState(categoryArg);
-  const [price, setPrice] = useState(priceArg);
-  const [brand, setBrand] = useState(brandArg);
-  const [sold_out, setSold_out] = useState(sold_outArg);
-  const [stock, setStock] = useState(stockArg);
-  const [images, setImages] = useState(imagesArg);
+const CreateCategorieBox = ({ children, categories }) => {
+  const [name, setName] = useState("");
+  const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
+  const [brand, setBrand] = useState("");
+  const [sold_out, setSold_out] = useState("");
+  const [stock, setStock] = useState("");
+  const [images, setImages] = useState([]);
 
   const handleImageChange = (e) => {
     if (e.target.files && e.target.files[0]) {
@@ -51,19 +39,14 @@ const EditProduct = ({
     }
   };
 
-  const handleSubmit = () => {
-    console.log({ name, description, images });
-
-    setName("");
-    setDescription("");
-  };
+  const handleSubmit = () => {};
 
   return (
     <AlertDialog>
       <AlertDialogTrigger>{children}</AlertDialogTrigger>
       <AlertDialogContent className="max-w-lg w-full p-4 h-[80vh] overflow-auto">
         <AlertDialogHeader>
-          <AlertDialogTitle>Edit Products Details</AlertDialogTitle>
+          <AlertDialogTitle>Create New Products</AlertDialogTitle>
         </AlertDialogHeader>
         <form className="space-y-4">
           <div>
@@ -198,4 +181,4 @@ const EditProduct = ({
   );
 };
 
-export default EditProduct;
+export default CreateCategorieBox;

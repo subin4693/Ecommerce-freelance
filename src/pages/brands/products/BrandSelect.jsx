@@ -19,7 +19,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-const CreateProduct = ({ categories }) => {
+const BrandSelect = ({ categories }) => {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
 
@@ -34,16 +34,16 @@ const CreateProduct = ({ categories }) => {
         >
           {value
             ? categories.find((category) => category.name === value)?.name
-            : "Select Categories..."}
+            : "Select Brand..."}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
 
       <PopoverContent className="w-full p-0">
         <Command className="w-full">
-          <CommandInput placeholder="Search Categories..." />
+          <CommandInput placeholder="Search Brands..." />
           <CommandList className="w-full">
-            <CommandEmpty>No Categories found.</CommandEmpty>
+            <CommandEmpty>No Brands found.</CommandEmpty>
             <CommandGroup>
               {categories.map((category) => (
                 <CommandItem
@@ -71,4 +71,4 @@ const CreateProduct = ({ categories }) => {
   );
 };
 
-export default CreateProduct;
+export default BrandSelect;
