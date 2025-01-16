@@ -27,28 +27,49 @@ const ProductTable = ({ product }) => {
         </TableRow>
       </TableHeader>
       <TableBody>
-        {product?.map(({ _id, name, brand, sold_out }) => {
-          return (
-            <TableRow>
-              <TableCell>{_id}</TableCell>
-              <TableCell className="font-medium">{name}</TableCell>
-              <TableCell>{brand?.name}</TableCell>
-              <TableCell>{sold_out}</TableCell>
-              <TableCell className="flex gap-2">
-                <ViewProduct>
-                  <Button size="icon" variant="outline">
-                    <Eye />
+        {product?.map(
+          ({
+            _id,
+            name,
+            description,
+            category,
+            price,
+            images,
+            brand,
+            sold_out,
+            stock,
+          }) => {
+            return (
+              <TableRow>
+                <TableCell>{_id}</TableCell>
+                <TableCell className="font-medium">{name}</TableCell>
+                <TableCell>{brand?.name}</TableCell>
+                <TableCell>{sold_out}</TableCell>
+                <TableCell className="flex gap-2">
+                  <ViewProduct
+                    name={name}
+                    description={description}
+                    category={category}
+                    price={price}
+                    images={images}
+                    brand={brand}
+                    sold_out={sold_out}
+                    stock={stock}
+                  >
+                    <Button size="icon" variant="outline">
+                      <Eye />
+                    </Button>
+                  </ViewProduct>{" "}
+                </TableCell>
+                <TableCell>
+                  <Button size="icon" variant="destructive">
+                    <Trash2 />
                   </Button>
-                </ViewProduct>{" "}
-              </TableCell>
-              <TableCell>
-                <Button size="icon" variant="destructive">
-                  <Trash2 />
-                </Button>
-              </TableCell>
-            </TableRow>
-          );
-        })}
+                </TableCell>
+              </TableRow>
+            );
+          }
+        )}
       </TableBody>
     </Table>
   );

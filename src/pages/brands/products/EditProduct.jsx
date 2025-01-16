@@ -35,6 +35,7 @@ const EditProduct = ({
   sold_out: sold_outArg,
   stock: stockArg,
   categories,
+  setProducts,
 }) => {
   const [name, setName] = useState(nameArg);
   const [description, setDescription] = useState(descriptionArg);
@@ -53,9 +54,25 @@ const EditProduct = ({
 
   const handleSubmit = () => {
     console.log({ name, description, images });
-
-    setName("");
-    setDescription("");
+    setProducts((prev) => {
+      const temp = prev.map((data) => {
+        if (data._id == _id) {
+          return {
+            _id,
+            name,
+            description,
+            category,
+            price,
+            brand,
+            sold_out,
+            stock,
+            images,
+          };
+        }
+        data;
+      });
+      return temp;
+    });
   };
 
   return (
@@ -191,7 +208,7 @@ const EditProduct = ({
         </form>
         <AlertDialogFooter className="mt-4">
           <AlertDialogCancel>Close</AlertDialogCancel>
-          <AlertDialogAction>Save</AlertDialogAction>
+          <AlertDialogAction onClick={handleSubmit}>Save</AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

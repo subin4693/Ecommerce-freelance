@@ -13,7 +13,7 @@ import { Trash2, Eye, Edit } from "lucide-react";
 import ViewProduct from "./ViewProducts";
 import EditProduct from "./EditProduct";
 
-const ProductTable = ({ product, categories }) => {
+const ProductTable = ({ product, categories, setProducts }) => {
   return (
     <Table>
       <TableCaption>A list of all products</TableCaption>
@@ -76,6 +76,7 @@ const ProductTable = ({ product, categories }) => {
                     sold_out={sold_out}
                     stock={stock}
                     categories={categories}
+                    setProducts={setProducts}
                   >
                     <Button size="icon" variant="outline">
                       <Edit />

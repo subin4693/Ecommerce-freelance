@@ -75,7 +75,11 @@ const Products = () => {
           </Button>
         </CreateProduct>
       </div>
-      <ProductTable product={products} categories={categories} />
+      <ProductTable
+        product={products}
+        categories={categories}
+        setProducts={setProducts}
+      />
     </div>
   );
 };

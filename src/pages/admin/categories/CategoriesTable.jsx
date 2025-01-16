@@ -33,7 +33,7 @@ const CategoriesTable = ({ categories, setCategories }) => {
             </TableHead>
             <TableHead>Category Name</TableHead>
 
-            <TableHead className="hidden md:inline">Description</TableHead>
+            <TableHead className="hidden md:inline ">Description</TableHead>
             <TableHead className="w-[100px]">View</TableHead>
             <TableHead className="w-[100px] hidden sm:inline">Edit</TableHead>
             <TableHead className="w-[100px] hidden sm:inline">Remove</TableHead>
@@ -44,7 +44,7 @@ const CategoriesTable = ({ categories, setCategories }) => {
             <TableRow key={_id}>
               <TableCell className="hidden sm:inline">{_id}</TableCell>
               <TableCell className="font-medium">{name}</TableCell>
-              <TableCell className="hidden md:inline">{description}</TableCell>
+              <TableCell className="hidden md:inline ">{description}</TableCell>
 
               <TableCell>
                 <ViewCategorieDetails
